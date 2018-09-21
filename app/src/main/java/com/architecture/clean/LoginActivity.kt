@@ -7,16 +7,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 
 import kotlinx.android.synthetic.main.activity_login.*
 
 /**
- * A login screen that offers login via email/password.
+ * A login screen.
  */
 class LoginActivity : AppCompatActivity() {
     /**
@@ -27,14 +25,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
-            if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
+        password.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
                 attemptLogin()
-                return@OnEditorActionListener true
+                return@setOnEditorActionListener true
             }
             false
-        })
-
+        }
         email_sign_in_button.setOnClickListener { attemptLogin() }
     }
 
