@@ -10,7 +10,6 @@ import io.reactivex.observers.DisposableCompletableObserver
  * Abstract class for Completable.
  */
 abstract class CompletableInteractor(override val backgroundScheduler: BackgroundScheduler, override val postExecutionScheduler: PostExecutionScheduler) : BaseInteractor(backgroundScheduler, postExecutionScheduler) {
-    private val compositeDisposable = CompositeDisposable()
 
     /**
      * Execute the operation.
@@ -21,12 +20,5 @@ abstract class CompletableInteractor(override val backgroundScheduler: Backgroun
 
         val disposableObserver = newCompletable.subscribeWith(disposableCompletableObserver)
         compositeDisposable.add(disposableObserver)
-    }
-
-    /**
-     * Cancel operations and dispose resources.
-     */
-    fun dispose() {
-        compositeDisposable.dispose()
     }
 }
