@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * The Login presenter.
  */
-class LoginPresenter {
+class LoginPresenter : BasePresenter() {
     private val loginInteractor = LoginInteractor(object : BackgroundScheduler {
         override val scheduler: Scheduler
             get() = Schedulers.io()
@@ -36,5 +36,9 @@ class LoginPresenter {
                 view.hideLoading()
             }
         })
+    }
+
+    public override fun onDestroy() {
+        loginInteractor.dispose()
     }
 }

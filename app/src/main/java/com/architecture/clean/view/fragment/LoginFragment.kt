@@ -48,4 +48,9 @@ class LoginFragment : BaseFragment(), LoginView {
         login_progress.visibility = View.GONE
         login_form.visibility = View.VISIBLE
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        loginPresenter.onDestroy()
+    }
 }
