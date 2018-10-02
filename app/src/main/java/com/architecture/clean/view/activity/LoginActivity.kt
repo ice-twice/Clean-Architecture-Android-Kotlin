@@ -1,22 +1,22 @@
-package com.architecture.clean
+package com.architecture.clean.view.activity
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.TargetApi
-import android.support.v7.app.AppCompatActivity
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import com.architecture.clean.R
 
 import kotlinx.android.synthetic.main.activity_login.*
 
 /**
  * A login screen.
  */
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
