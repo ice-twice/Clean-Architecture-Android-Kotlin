@@ -13,7 +13,7 @@ abstract class CompletableInteractor(override val backgroundScheduler: Backgroun
     private val compositeDisposable = CompositeDisposable()
 
     /**
-     * Execute operation.
+     * Execute the operation.
      */
     fun execute(completable: Completable, disposableCompletableObserver: DisposableCompletableObserver) {
         val newCompletable = completable.subscribeOn(backgroundScheduler.scheduler)
