@@ -27,7 +27,7 @@ class LoginPresenter {
     fun clickLoginButton(view: LoginView, login: String, password: String) {
         // need to show progress
         view.showLoading()
-        loginInteractor.execute(object : DisposableCompletableObserver() {
+        loginInteractor.login(login, password, object : DisposableCompletableObserver() {
             override fun onComplete() {
                 view.hideLoading()
             }
@@ -35,6 +35,6 @@ class LoginPresenter {
             override fun onError(e: Throwable) {
                 view.hideLoading()
             }
-        }, arrayOf(login, password))
+        })
     }
 }
