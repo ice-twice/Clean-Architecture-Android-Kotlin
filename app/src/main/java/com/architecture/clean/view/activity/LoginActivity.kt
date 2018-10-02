@@ -10,6 +10,7 @@ import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import com.architecture.clean.R
+import com.architecture.clean.view.fragment.LoginFragment
 
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -24,7 +25,13 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_layout)
+
+        if (savedInstanceState == null) {
+            addFragment(R.id.fragment_container, LoginFragment())
+        }
+
+       /* setContentView(R.layout.activity_login)
         password.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
                 attemptLogin()
@@ -32,7 +39,7 @@ class LoginActivity : BaseActivity() {
             }
             false
         }
-        email_sign_in_button.setOnClickListener { attemptLogin() }
+        email_sign_in_button.setOnClickListener { attemptLogin() }*/
     }
 
     /**
