@@ -1,33 +1,22 @@
 package com.architecture.clean.domain
 
-import android.os.AsyncTask
-import android.util.Log
+import io.reactivex.Completable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * The login interactor.
  */
-// todo remove async task
 class LoginInteractor {
-    private var loginTask: UserLoginTask? = null
-
     /**
      * The login operation.
      */
-    fun login(login: String, password: String) {
-        loginTask = UserLoginTask(login, password)
-        loginTask!!.execute(null)
-    }
-
-    class UserLoginTask internal constructor(private val login: String, private val password: String) : AsyncTask<Void, Void, Boolean>() {
-        override fun doInBackground(vararg params: Void): Boolean? {
-            try {
-                Thread.sleep(2000)
-            } catch (e: InterruptedException) {
-                return false
-            }
-
-            Log.d("CleanArchitecture", "login - $login, password - $password")
-            return false
+    fun login(login: String, password: String): Completable? {
+        return Completable.create { emitter ->
+            Thread.sleep(5000)
+            emitter.onComplete()
         }
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 }

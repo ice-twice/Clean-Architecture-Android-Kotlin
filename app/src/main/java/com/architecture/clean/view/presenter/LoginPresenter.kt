@@ -2,6 +2,7 @@ package com.architecture.clean.view.presenter
 
 import com.architecture.clean.domain.LoginInteractor
 import com.architecture.clean.view.fragment.interfaces.LoginView
+import io.reactivex.observers.DisposableCompletableObserver
 
 /**
  * The Login presenter.
@@ -16,6 +17,14 @@ class LoginPresenter {
         // need to show progress
         view.showLoading()
         loginInteractor.login(login, password)
-        // todo hide progress
+                ?.subscribeWith(object : DisposableCompletableObserver() {
+            override fun onComplete() {
+                view.hideLoading()
+            }
+
+            override fun onError(e: Throwable) {
+                view.hideLoading()
+            }
+        })
     }
 }
