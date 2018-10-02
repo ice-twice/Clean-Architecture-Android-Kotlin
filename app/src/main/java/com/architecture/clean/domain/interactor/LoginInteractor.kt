@@ -17,7 +17,11 @@ class LoginInteractor(override val backgroundScheduler: BackgroundScheduler, ove
     fun login(login: String, password: String, disposableCompletableObserver: DisposableCompletableObserver) {
         println("CleanArchitecture : login - $login, password - $password")
         val completable = Completable.create { emitter ->
-            Thread.sleep(5000)
+            try {
+                Thread.sleep(5000)
+            } catch (e: Exception) {
+                // empty
+            }
             emitter.onComplete()
         }
         execute(completable, disposableCompletableObserver)
