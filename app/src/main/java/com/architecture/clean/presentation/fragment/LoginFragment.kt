@@ -1,4 +1,4 @@
-package com.architecture.clean.view.fragment
+package com.architecture.clean.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import com.architecture.clean.R
-import com.architecture.clean.view.fragment.interfaces.LoginView
-import com.architecture.clean.view.presenter.LoginPresenter
+import com.architecture.clean.presentation.fragment.interfaces.LoginView
+import com.architecture.clean.presentation.presenter.LoginPresenter
 import kotlinx.android.synthetic.main.fragment_login.*
 
 /**

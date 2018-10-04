@@ -1,4 +1,4 @@
-package com.architecture.clean.view.fragment
+package com.architecture.clean.presentation.fragment
 
 import android.support.v4.app.Fragment
 

@@ -1,4 +1,4 @@
-package com.architecture.clean.view
+package com.architecture.clean.presentation
 
 import android.app.Application
 import com.architecture.clean.BuildConfig

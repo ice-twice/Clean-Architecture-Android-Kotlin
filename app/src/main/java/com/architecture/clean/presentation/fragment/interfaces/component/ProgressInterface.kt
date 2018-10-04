@@ -1,4 +1,4 @@
-package com.architecture.clean.view.fragment.interfaces.component
+package com.architecture.clean.presentation.fragment.interfaces.component
 
 /**
  *  The hide/show progress interface.
