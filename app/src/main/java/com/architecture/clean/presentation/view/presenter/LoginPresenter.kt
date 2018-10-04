@@ -1,9 +1,9 @@
-package com.architecture.clean.presentation.presenter
+package com.architecture.clean.presentation.view.presenter
 
 import com.architecture.clean.domain.interactor.LoginInteractor
 import com.architecture.clean.domain.scheduler.BackgroundScheduler
 import com.architecture.clean.domain.scheduler.PostExecutionScheduler
-import com.architecture.clean.presentation.fragment.interfaces.LoginView
+import com.architecture.clean.presentation.view.fragment.interfaces.LoginView
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableCompletableObserver

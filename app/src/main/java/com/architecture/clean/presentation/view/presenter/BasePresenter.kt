@@ -1,4 +1,4 @@
-package com.architecture.clean.presentation.presenter
+package com.architecture.clean.presentation.view.presenter
 
 /**
  * The base presenter class.

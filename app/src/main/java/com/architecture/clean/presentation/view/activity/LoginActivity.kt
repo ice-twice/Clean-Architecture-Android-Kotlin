@@ -1,8 +1,8 @@
-package com.architecture.clean.presentation.activity
+package com.architecture.clean.presentation.view.activity
 
 import android.os.Bundle
 import com.architecture.clean.R
-import com.architecture.clean.presentation.fragment.LoginFragment
+import com.architecture.clean.presentation.view.fragment.LoginFragment
 
 /**
  * A login screen.
