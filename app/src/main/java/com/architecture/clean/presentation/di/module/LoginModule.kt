@@ -1,9 +1,7 @@
 package com.architecture.clean.presentation.di.module
 
-import com.architecture.clean.domain.interactor.LoginInteractor
 import com.architecture.clean.domain.scheduler.BackgroundScheduler
 import com.architecture.clean.domain.scheduler.PostExecutionScheduler
-import com.architecture.clean.presentation.view.presenter.LoginPresenter
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -12,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Singleton
 
 @Module
-class LoginModule() {
+class LoginModule {
 
     @Provides
     @Singleton

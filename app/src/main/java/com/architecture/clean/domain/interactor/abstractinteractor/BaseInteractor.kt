@@ -8,7 +8,9 @@ import io.reactivex.disposables.CompositeDisposable
  * Abstract interactor.
  */
 abstract class BaseInteractor(protected open val backgroundScheduler: BackgroundScheduler, protected open val postExecutionScheduler: PostExecutionScheduler) {
-    protected val compositeDisposable = CompositeDisposable()
+    protected val compositeDisposable: CompositeDisposable by lazy(mode = LazyThreadSafetyMode.NONE) {
+        CompositeDisposable()
+    }
 
     /**
      * Cancel operations and dispose resources.
