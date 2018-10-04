@@ -5,11 +5,12 @@ import com.architecture.clean.domain.scheduler.BackgroundScheduler
 import com.architecture.clean.domain.scheduler.PostExecutionScheduler
 import io.reactivex.Completable
 import io.reactivex.observers.DisposableCompletableObserver
+import javax.inject.Inject
 
 /**
  * The login interactor.
  */
-class LoginInteractor(override val backgroundScheduler: BackgroundScheduler, override val postExecutionScheduler: PostExecutionScheduler) : CompletableInteractor(backgroundScheduler, postExecutionScheduler) {
+class LoginInteractor @Inject constructor(override val backgroundScheduler: BackgroundScheduler, override val postExecutionScheduler: PostExecutionScheduler) : CompletableInteractor(backgroundScheduler, postExecutionScheduler) {
 
     /**
      * Handle the login operation.

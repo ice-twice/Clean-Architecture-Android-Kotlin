@@ -6,19 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import com.architecture.clean.R
+import com.architecture.clean.presentation.di.component.DaggerLoginComponent
 import com.architecture.clean.presentation.view.fragment.interfaces.LoginView
 import com.architecture.clean.presentation.view.presenter.LoginPresenter
 import kotlinx.android.synthetic.main.fragment_login.*
+import javax.inject.Inject
 
 /**
  * Login fragment.
  */
 class LoginFragment : BaseFragment(), LoginView {
-    private val loginPresenter = LoginPresenter()
+    @Inject
+    lateinit var loginPresenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
+
+        DaggerLoginComponent.create().inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
