@@ -13,9 +13,9 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
     private val loginLiveData by lazy(mode = LazyThreadSafetyMode.NONE) {
         MutableLiveData<Boolean>()
     }
-
     private val loginLiveDataObserver by lazy(mode = LazyThreadSafetyMode.NONE) {
         Observer<Boolean> {
+            isLogging = false
             view?.hideLoading()
             if (it) {
                 view?.showMain()
@@ -23,6 +23,13 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
                 view?.showLoginError()
             }
         }
+    }
+
+    private var isLogging = false
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    internal fun start() {
+        if (isLogging) view?.showLoading()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -34,6 +41,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
      * Handle a click oт the login button.
      */
     internal fun clickLoginButton(view: LoginView, login: String, password: String) {
+        isLogging = true
         loginLiveData.observe(view as LifecycleOwner, loginLiveDataObserver)
         view.showLoading()
         loginInteractor.login(login, password, object : DisposableCompletableObserver() {
