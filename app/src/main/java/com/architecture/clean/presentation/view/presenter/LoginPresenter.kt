@@ -25,10 +25,6 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
         }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun initialize() {
-    }
-
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     internal fun destroy() {
         loginInteractor.dispose()
