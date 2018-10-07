@@ -24,6 +24,7 @@ class LoginFragment : BaseFragment(), LoginView {
         retainInstance = true
 
         DaggerLoginComponent.create().inject(this)
+        lifecycle.addObserver(loginPresenter)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,10 +53,5 @@ class LoginFragment : BaseFragment(), LoginView {
     override fun hideLoading() {
         login_progress.visibility = View.GONE
         login_form.visibility = View.VISIBLE
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        loginPresenter.onDestroy()
     }
 }
