@@ -23,9 +23,7 @@ class LoginFragment : BaseFragment(), LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
-
         DaggerLoginComponent.create().inject(this)
-
         loginPresenter.bindView(this)
         lifecycle.addObserver(loginPresenter)
     }

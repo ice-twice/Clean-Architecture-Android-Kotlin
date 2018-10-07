@@ -13,11 +13,4 @@ open class BasePresenter<V> {
     fun bindView(view: V) {
         this.view = view
     }
-
-    /**
-     * Unbind a view from the presenter.
-     */
-    fun unbindView() {
-        view = null
-    }
 }
