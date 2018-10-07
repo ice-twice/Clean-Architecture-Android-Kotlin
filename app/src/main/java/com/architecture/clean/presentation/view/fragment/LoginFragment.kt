@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import com.architecture.clean.R
 import com.architecture.clean.presentation.di.component.DaggerLoginComponent
 import com.architecture.clean.presentation.view.fragment.interfaces.LoginView
@@ -24,6 +25,8 @@ class LoginFragment : BaseFragment(), LoginView {
         retainInstance = true
 
         DaggerLoginComponent.create().inject(this)
+
+        loginPresenter.bindView(this)
         lifecycle.addObserver(loginPresenter)
     }
 
@@ -54,4 +57,13 @@ class LoginFragment : BaseFragment(), LoginView {
         login_progress.visibility = View.GONE
         login_form.visibility = View.VISIBLE
     }
+
+    override fun showLoginError() {
+        Toast.makeText(context, "Login failed!", Toast.LENGTH_LONG).show()
+    }
+
+    override fun showMain() {
+        //show main
+    }
+
 }

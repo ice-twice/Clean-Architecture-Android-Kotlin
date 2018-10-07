@@ -5,4 +5,14 @@ import com.architecture.clean.presentation.view.fragment.interfaces.component.Pr
 /**
  * The login interface.
  */
-interface LoginView : ProgressInterface
+interface LoginView : ProgressInterface {
+    /**
+     * Show the login error.
+     */
+    fun showLoginError()
+
+    /**
+     * Show the main screen.
+     */
+    fun showMain()
+}
