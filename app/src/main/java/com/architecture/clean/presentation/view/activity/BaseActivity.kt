@@ -1,7 +1,7 @@
 package com.architecture.clean.presentation.view.activity
 
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 /**
  * Abstract activity.
