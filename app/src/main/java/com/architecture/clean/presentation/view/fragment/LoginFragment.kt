@@ -24,11 +24,12 @@ class LoginFragment : BaseFragment(), LoginView {
         super.onCreate(savedInstanceState)
         retainInstance = true
         DaggerLoginComponent.create().inject(this)
-        lifecycle.addObserver(loginPresenter)
+        lifecycle.addObserver(loginPresenter.viewLifecycleObserver)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         loginPresenter.bindView(this, viewLifecycleOwner)
+        viewLifecycleOwner.lifecycle.addObserver(loginPresenter.viewLayoutLifecycleObserver)
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
@@ -47,20 +48,30 @@ class LoginFragment : BaseFragment(), LoginView {
 
 
     override fun showLoading() {
+
+        println("qwerty showLoading()")
+
         login_progress.visibility = View.VISIBLE
         login_form.visibility = View.GONE
     }
 
     override fun hideLoading() {
+        println("qwerty hideLoading()")
+
+
         login_progress.visibility = View.GONE
         login_form.visibility = View.VISIBLE
     }
 
     override fun showLoginError() {
+        println("qwerty showLoginError()")
+
         Toast.makeText(context, "Login failed!", Toast.LENGTH_LONG).show()
     }
 
     override fun showMain() {
+        println("qwerty showMain()")
+
         //show main
     }
 }
