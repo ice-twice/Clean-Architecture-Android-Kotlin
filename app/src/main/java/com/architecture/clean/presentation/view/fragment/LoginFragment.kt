@@ -24,11 +24,11 @@ class LoginFragment : BaseFragment(), LoginView {
         super.onCreate(savedInstanceState)
         retainInstance = true
         DaggerLoginComponent.create().inject(this)
-        loginPresenter.bindView(this)
         lifecycle.addObserver(loginPresenter)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        loginPresenter.bindView(this, viewLifecycleOwner)
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
@@ -37,12 +37,12 @@ class LoginFragment : BaseFragment(), LoginView {
 
         password.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
-                loginPresenter.clickLoginButton(this, email.text.toString(), password.text.toString())
+                loginPresenter.clickLoginButton(email.text.toString(), password.text.toString())
                 return@setOnEditorActionListener true
             }
             false
         }
-        email_sign_in_button.setOnClickListener { loginPresenter.clickLoginButton(this, email.text.toString(), password.text.toString()) }
+        email_sign_in_button.setOnClickListener { loginPresenter.clickLoginButton(email.text.toString(), password.text.toString()) }
     }
 
 
@@ -63,5 +63,4 @@ class LoginFragment : BaseFragment(), LoginView {
     override fun showMain() {
         //show main
     }
-
 }
