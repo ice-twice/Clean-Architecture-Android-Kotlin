@@ -24,11 +24,14 @@ class LoginFragment : BaseFragment(), LoginView {
         super.onCreate(savedInstanceState)
         retainInstance = true
         DaggerLoginComponent.create().inject(this)
+        // observe fragment lifecycle
         lifecycle.addObserver(loginPresenter.viewLifecycleObserver)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // the first method where it is safe to access the view lifecycle is onCreateView()
         loginPresenter.bindView(this, viewLifecycleOwner)
+        // observe the fragment layout lifecycle
         viewLifecycleOwner.lifecycle.addObserver(loginPresenter.viewLayoutLifecycleObserver)
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
