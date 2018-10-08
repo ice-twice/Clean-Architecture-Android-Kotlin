@@ -1,6 +1,9 @@
 package com.architecture.clean.presentation.view.presenter
 
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
 import com.architecture.clean.domain.exception.WrongLoginOrPassword
 import com.architecture.clean.domain.interactor.LoginInteractor
 import com.architecture.clean.presentation.view.component.StoppableLiveData

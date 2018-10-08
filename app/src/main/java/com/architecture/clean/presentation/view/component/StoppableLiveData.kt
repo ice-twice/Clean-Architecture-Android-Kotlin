@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 class StoppableLiveData<T> : MutableLiveData<T>() {
     var stopped = false
 
-    fun value(value: T?) : StoppableLiveData<T> {
+    fun value(value: T?): StoppableLiveData<T> {
         this.stopped = false
         super.setValue(value)
         return this
