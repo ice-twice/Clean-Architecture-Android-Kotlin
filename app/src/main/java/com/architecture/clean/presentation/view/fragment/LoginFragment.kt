@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment(), LoginView {
         super.onViewCreated(view, savedInstanceState)
 
         password_field.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
                 loginPresenter.clickLoginButton(login_field.text.toString(), password_field.text.toString())
                 return@setOnEditorActionListener true
             }
