@@ -46,7 +46,7 @@ class LoginFragment : BaseFragment(), LoginView {
             }
             false
         }
-        email_sign_in_button.setOnClickListener { loginPresenter.clickLoginButton(login_field.text.toString(), password_field.text.toString()) }
+        sign_button.setOnClickListener { loginPresenter.clickLoginButton(login_field.text.toString(), password_field.text.toString()) }
     }
 
 
