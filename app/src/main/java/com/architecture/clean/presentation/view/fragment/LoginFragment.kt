@@ -39,14 +39,14 @@ class LoginFragment : BaseFragment(), LoginView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        password.setOnEditorActionListener { _, actionId, _ ->
+        password_field.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
-                loginPresenter.clickLoginButton(email.text.toString(), password.text.toString())
+                loginPresenter.clickLoginButton(login_field.text.toString(), password_field.text.toString())
                 return@setOnEditorActionListener true
             }
             false
         }
-        email_sign_in_button.setOnClickListener { loginPresenter.clickLoginButton(email.text.toString(), password.text.toString()) }
+        email_sign_in_button.setOnClickListener { loginPresenter.clickLoginButton(login_field.text.toString(), password_field.text.toString()) }
     }
 
 
