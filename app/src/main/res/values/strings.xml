@@ -6,4 +6,5 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="login_title">Clean Architecture</string>
+    <string name="login_hint">To open the next view, leave the login and the password fields empty.</string>
 </resources>
