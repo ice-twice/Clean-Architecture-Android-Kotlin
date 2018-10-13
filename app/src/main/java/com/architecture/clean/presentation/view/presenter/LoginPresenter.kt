@@ -39,6 +39,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
      * Handle a click oт the login button.
      */
     internal fun clickLoginButton(login: String, password: String) {
+        view.hideKeyboard()
         loginLoadingLiveEvent.value(true)
         loginFailureLiveEvent.stopped = true
         loginInteractor.login(login, password, object : DisposableCompletableObserver() {

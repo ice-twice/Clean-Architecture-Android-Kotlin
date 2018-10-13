@@ -10,6 +10,7 @@ import com.architecture.clean.R
 import com.architecture.clean.presentation.di.component.DaggerLoginComponent
 import com.architecture.clean.presentation.view.fragment.interfaces.LoginView
 import com.architecture.clean.presentation.view.presenter.LoginPresenter
+import com.architecture.clean.presentation.view.util.AndroidUtil
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -19,11 +20,19 @@ import javax.inject.Inject
 class LoginFragment : BaseFragment(), LoginView {
     @Inject
     lateinit var loginPresenter: LoginPresenter
+    @Inject
+    lateinit var androidUtil: AndroidUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
-        DaggerLoginComponent.create().inject(this)
+
+        DaggerLoginComponent.builder()
+                .schedulerModule(getModuleProvider().schedulerModule)
+                .androidUtilModule(getModuleProvider().androidUtilModule)
+                .build()
+                .inject(this)
+
         // observe fragment lifecycle
         lifecycle.addObserver(loginPresenter.viewLifecycleObserver)
     }
@@ -66,5 +75,9 @@ class LoginFragment : BaseFragment(), LoginView {
 
     override fun showMain() {
         //show main
+    }
+
+    override fun hideKeyboard() {
+        androidUtil.hideKeyboard(context, view)
     }
 }

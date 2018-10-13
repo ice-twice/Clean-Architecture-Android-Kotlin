@@ -15,4 +15,9 @@ interface LoginView : ProgressInterface {
      * Show the main screen.
      */
     fun showMain()
+
+    /**
+     * Hide the keyboard.
+     */
+    fun hideKeyboard()
 }
