@@ -1,4 +1,4 @@
-package com.architecture.clean.presentation.view.presenter
+package com.architecture.clean.presentation.presenter
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
