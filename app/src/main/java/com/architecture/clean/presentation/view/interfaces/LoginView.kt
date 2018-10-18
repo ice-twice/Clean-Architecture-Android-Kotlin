@@ -1,6 +1,6 @@
-package com.architecture.clean.presentation.view.fragment.interfaces
+package com.architecture.clean.presentation.view.interfaces
 
-import com.architecture.clean.presentation.view.fragment.interfaces.component.ProgressInterface
+import com.architecture.clean.presentation.view.interfaces.component.ProgressInterface
 
 /**
  * The login interface.
