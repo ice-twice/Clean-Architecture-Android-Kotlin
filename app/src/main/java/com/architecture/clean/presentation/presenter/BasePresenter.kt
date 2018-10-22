@@ -1,20 +1,25 @@
 package com.architecture.clean.presentation.presenter
 
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 
 /**
  * The base presenter class.
  */
 open class BasePresenter<V : Any> {
-    protected lateinit var view: V
-    protected lateinit var lifecycleOwner: LifecycleOwner
+    lateinit var view: V
+    protected lateinit var viewLifecycleOwner: LifecycleOwner
+    protected lateinit var viewLayoutLifecycleOwner: LifecycleOwner
+    protected open var viewLifecycleObserver = object : LifecycleObserver {}
+    protected open var viewLayoutLifecycleObserver = object : LifecycleObserver {}
 
-    /**
-     * Bind view to the presenter.
-     * @param view the view.
-     */
-    fun bindView(view: V, lifecycleOwner: LifecycleOwner) {
-        this.view = view
-        this.lifecycleOwner = lifecycleOwner
+    fun setViewLifecycleAndObserve(viewLifecycleOwner: LifecycleOwner) {
+        this.viewLifecycleOwner = viewLifecycleOwner
+        viewLifecycleOwner.lifecycle.addObserver(viewLifecycleObserver)
+    }
+
+    fun setViewLayoutLifecycleAndObserve(viewLayoutLifecycleOwner: LifecycleOwner) {
+        this.viewLayoutLifecycleOwner = viewLayoutLifecycleOwner
+        viewLayoutLifecycleOwner.lifecycle.addObserver(viewLayoutLifecycleObserver)
     }
 }

@@ -15,13 +15,10 @@ import javax.inject.Inject
  * The Login presenter.
  */
 class LoginPresenter @Inject constructor(private val loginInteractor: LoginInteractor) : BasePresenter<LoginView>(), LifecycleObserver {
-    val viewLifecycleObserver by lazy(mode = LazyThreadSafetyMode.NONE) {
-        ViewLifecycleObserver()
-    }
+    override var viewLifecycleObserver: LifecycleObserver = ViewLifecycleObserver()
 
-    val viewLayoutLifecycleObserver by lazy(mode = LazyThreadSafetyMode.NONE) {
-        ViewLayoutLifecycleObserver()
-    }
+    override var viewLayoutLifecycleObserver: LifecycleObserver = ViewLayoutLifecycleObserver()
+
 
     private val loginLoadingLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
         StoppableLiveData<Boolean>()
@@ -73,7 +70,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
     inner class ViewLayoutLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun create() {
-            loginLoadingLiveEvent.observe(lifecycleOwner, Observer {
+            loginLoadingLiveEvent.observe(viewLifecycleOwner, Observer {
                 if (it) {
                     view.showLoading()
                 } else {
@@ -81,13 +78,13 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
                 }
             })
 
-            loginFailureLiveEvent.observe(lifecycleOwner, Observer {
+            loginFailureLiveEvent.observe(viewLifecycleOwner, Observer {
                 if (it is WrongLoginOrPassword) {
                     view.showLoginError()
                 }
             })
 
-            loginSuccessLiveEvent.observe(lifecycleOwner, Observer {
+            loginSuccessLiveEvent.observe(viewLifecycleOwner, Observer {
                 view.showMain()
             })
         }
