@@ -1,4 +1,4 @@
-package com.architecture.clean.presentation.presenter.component
+package com.architecture.clean.presentation.component
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

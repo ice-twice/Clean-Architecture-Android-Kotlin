@@ -1,6 +1,6 @@
 package com.architecture.clean.presentation.di.module
 
-import com.architecture.clean.presentation.view.util.AndroidUtil
+import com.architecture.clean.presentation.util.AndroidUtil
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

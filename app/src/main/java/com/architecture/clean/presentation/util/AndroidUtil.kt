@@ -1,4 +1,4 @@
-package com.architecture.clean.presentation.view.util
+package com.architecture.clean.presentation.util
 
 import android.app.Activity
 import android.content.Context

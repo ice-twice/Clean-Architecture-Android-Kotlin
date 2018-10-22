@@ -6,8 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import com.architecture.clean.domain.exception.WrongLoginOrPassword
 import com.architecture.clean.domain.interactor.LoginInteractor
-import com.architecture.clean.presentation.presenter.component.StoppableLiveData
-import com.architecture.clean.presentation.view.interfaces.LoginView
+import com.architecture.clean.presentation.component.StoppableLiveData
+import com.architecture.clean.presentation.interfaces.LoginView
 import io.reactivex.observers.DisposableCompletableObserver
 import javax.inject.Inject
 

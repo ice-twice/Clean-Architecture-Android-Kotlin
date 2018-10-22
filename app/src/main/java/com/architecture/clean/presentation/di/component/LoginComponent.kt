@@ -2,7 +2,7 @@ package com.architecture.clean.presentation.di.component
 
 import com.architecture.clean.presentation.di.module.AndroidUtilModule
 import com.architecture.clean.presentation.di.module.SchedulerModule
-import com.architecture.clean.presentation.view.fragment.LoginFragment
+import com.architecture.clean.presentation.fragment.LoginFragment
 import dagger.Component
 import javax.inject.Singleton
 

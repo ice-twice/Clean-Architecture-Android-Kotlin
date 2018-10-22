@@ -1,4 +1,4 @@
-package com.architecture.clean.presentation.view.activity
+package com.architecture.clean.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
