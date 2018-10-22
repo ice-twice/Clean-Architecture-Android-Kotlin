@@ -33,10 +33,12 @@ class LoginFragment : BaseFragment(), LoginView {
                 .build()
                 .inject(this)
 
-        // set view
-        loginPresenter.view = this
-        // observe fragment lifecycle
-        loginPresenter.setViewLifecycleAndObserve(this)
+        loginPresenter.apply {
+            // set view
+            view = this@LoginFragment
+            // observe fragment lifecycle
+            setViewLifecycleAndObserve(this@LoginFragment)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
