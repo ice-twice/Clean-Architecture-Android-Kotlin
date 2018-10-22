@@ -6,7 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 /**
  * The base presenter class.
  */
-open class BasePresenter<V : Any> {
+abstract class BasePresenter<V : Any> {
     lateinit var view: V
     protected lateinit var viewLifecycleOwner: LifecycleOwner
     protected lateinit var viewLayoutLifecycleOwner: LifecycleOwner
