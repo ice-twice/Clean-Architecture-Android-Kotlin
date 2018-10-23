@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">CleanArchitecture-Android</string>
-
-    <!-- Strings related to login -->
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="login_title">Clean Architecture</string>
     <string name="login_hint">To open the next view, leave the login and the password fields empty.</string>
+    <string name="what_is_clean_architecture">What is Clean Architecture?</string>
+    <string name="advantages_of_clean_architecture">Advantages of Clean Architecture</string>
+    <string name="about_author">About author</string>
 </resources>

@@ -33,16 +33,16 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="bottom"
                     android:background="@color/topic_name_background"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:lines="1"
                     android:padding="@dimen/dp8"
-                    android:text="CardView1"
+                    android:text="@string/what_is_clean_architecture"
                     android:textColor="@android:color/white"
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -54,20 +54,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/topic_logo1" />
+                    android:src="@drawable/topic_logo2" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="bottom"
                     android:background="@color/topic_name_background"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:lines="1"
                     android:padding="@dimen/dp8"
-                    android:text="CardView2"
+                    android:text="@string/advantages_of_clean_architecture"
                     android:textColor="@android:color/white"
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -79,20 +79,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/topic_logo1" />
+                    android:src="@drawable/topic_logo3" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="bottom"
                     android:background="@color/topic_name_background"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:lines="1"
                     android:padding="@dimen/dp8"
-                    android:text="CardView3"
+                    android:text="@string/about_author"
                     android:textColor="@android:color/white"
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
