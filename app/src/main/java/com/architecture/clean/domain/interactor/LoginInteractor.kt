@@ -19,7 +19,7 @@ class LoginInteractor @Inject constructor(override val backgroundScheduler: Back
     fun login(login: String, password: String, disposableCompletableObserver: DisposableCompletableObserver) {
         val completable = Completable.create { emitter ->
             try {
-                Thread.sleep(5000)
+                Thread.sleep(2000)
             } catch (e: Exception) {
                 // empty
             }
