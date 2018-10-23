@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 abstract class BasePresenter<V : Any> {
     lateinit var view: V
     protected lateinit var viewLifecycleOwner: LifecycleOwner
-    protected lateinit var viewLayoutLifecycleOwner: LifecycleOwner
+    private lateinit var viewLayoutLifecycleOwner: LifecycleOwner
     protected open var viewLifecycleObserver = object : LifecycleObserver {}
     protected open var viewLayoutLifecycleObserver = object : LifecycleObserver {}
 
