@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import com.architecture.clean.R
+import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.di.component.DaggerLoginComponent
 import com.architecture.clean.presentation.interfaces.LoginView
 import com.architecture.clean.presentation.presenter.LoginPresenter
@@ -22,6 +23,8 @@ class LoginFragment : BaseFragment(), LoginView {
     lateinit var loginPresenter: LoginPresenter
     @Inject
     lateinit var androidUtil: AndroidUtil
+    @Inject
+    lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,7 @@ class LoginFragment : BaseFragment(), LoginView {
         DaggerLoginComponent.builder()
                 .schedulerModule(getModuleProvider().schedulerModule)
                 .androidUtilModule(getModuleProvider().androidUtilModule)
+                .navigationModule(getModuleProvider().navigatorModule)
                 .build()
                 .inject(this)
 
@@ -77,7 +81,7 @@ class LoginFragment : BaseFragment(), LoginView {
     }
 
     override fun showMain() {
-        //show main
+        navigator.showTopicList(context)
     }
 
     override fun hideKeyboard() {
