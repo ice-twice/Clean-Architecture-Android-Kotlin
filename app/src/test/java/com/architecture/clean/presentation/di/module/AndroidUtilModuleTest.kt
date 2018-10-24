@@ -37,4 +37,9 @@ internal class AndroidUtilModuleTest {
         val androidUtil3ToString = androidUtil3.toString()
         assertNotEquals(androidUtil1ToString, androidUtil3ToString)
     }
+
+    @Test
+    fun ifInstancesAreDifferent() {
+        assertNotEquals(AndroidUtilModule().provideAndroidUtil(), AndroidUtilModule().provideAndroidUtil())
+    }
 }
