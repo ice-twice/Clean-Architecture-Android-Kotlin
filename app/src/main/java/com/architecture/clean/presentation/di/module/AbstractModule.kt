@@ -18,4 +18,18 @@ abstract class AbstractModule<T> {
         // shouldn't be null
         return instance!!
     }
+
+    fun <T> getOrCreateInstance(reference: SoftReference<T>?, createInstance: () -> T): Pair<T, SoftReference<T>> {
+        var instance = reference?.get()
+        val newReference: SoftReference<T>?
+
+        if (reference == null || instance == null) {
+            instance = createInstance()!!
+            newReference = SoftReference(instance)
+        } else {
+            newReference = reference
+        }
+
+        return Pair(instance, newReference)
+    }
 }

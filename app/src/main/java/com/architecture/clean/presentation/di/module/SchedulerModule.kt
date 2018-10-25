@@ -7,36 +7,40 @@ import dagger.Provides
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.lang.ref.SoftReference
 import javax.inject.Singleton
 
 /**
  * The module is uses to provide schedulers.
  */
 @Module
-class SchedulerModule {
-    private val backgroundScheduler by lazy(mode = LazyThreadSafetyMode.NONE) {
-        object : BackgroundScheduler {
-            override val scheduler: Scheduler
-                get() = Schedulers.computation()
-        }
-    }
-
-    private val postExecutionScheduler by lazy(mode = LazyThreadSafetyMode.NONE) {
-        object : PostExecutionScheduler {
-            override val scheduler: Scheduler
-                get() = AndroidSchedulers.mainThread()
-        }
-    }
+class SchedulerModule : AbstractModule<BackgroundScheduler>() {
+    private var backgroundScheduler: SoftReference<BackgroundScheduler>? = null
+    private var postExecutionScheduler: SoftReference<PostExecutionScheduler>? = null
 
     @Provides
     @Singleton
     internal fun provideBackgroundScheduler(): BackgroundScheduler {
-        return backgroundScheduler
+        val pair = getOrCreateInstance<BackgroundScheduler>(backgroundScheduler) {
+            object : BackgroundScheduler {
+                override val scheduler: Scheduler
+                    get() = Schedulers.computation()
+            }
+        }
+        backgroundScheduler = pair.second
+        return pair.first
     }
 
     @Provides
     @Singleton
     internal fun providePostExecutionScheduler(): PostExecutionScheduler {
-        return postExecutionScheduler
+        val pair = getOrCreateInstance<PostExecutionScheduler>(postExecutionScheduler) {
+            object : PostExecutionScheduler {
+                override val scheduler: Scheduler
+                    get() = AndroidSchedulers.mainThread()
+            }
+        }
+        postExecutionScheduler = pair.second
+        return pair.first
     }
 }
