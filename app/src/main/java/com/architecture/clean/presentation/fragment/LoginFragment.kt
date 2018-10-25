@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import com.architecture.clean.R
-import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.di.component.DaggerLoginComponent
 import com.architecture.clean.presentation.interfaces.LoginView
+import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.presenter.LoginPresenter
 import com.architecture.clean.presentation.util.AndroidUtil
 import kotlinx.android.synthetic.main.fragment_login.*
