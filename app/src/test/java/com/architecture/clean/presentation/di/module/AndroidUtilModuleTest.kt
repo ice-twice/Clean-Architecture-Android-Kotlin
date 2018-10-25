@@ -19,11 +19,9 @@ internal class AndroidUtilModuleTest {
         var androidUtil1: AndroidUtil? = androidUtilModule.provideAndroidUtil()
         var androidUtil2: AndroidUtil? = androidUtilModule.provideAndroidUtil()
         assertEquals(androidUtil1, androidUtil2)
-        androidUtil2 = null
-
-
         val androidUtil1ToString = androidUtil1.toString()
         androidUtil1 = null
+        androidUtil2 = null
 
         // force the JVM to clear all SoftReferences
         try {
@@ -32,14 +30,13 @@ internal class AndroidUtilModuleTest {
             // Ignore
         }
 
-
         val androidUtil3 = androidUtilModule.provideAndroidUtil()
         val androidUtil3ToString = androidUtil3.toString()
         assertNotEquals(androidUtil1ToString, androidUtil3ToString)
     }
 
     @Test
-    fun ifInstancesAreDifferent() {
+    fun testIfInstancesAreDifferent() {
         assertNotEquals(AndroidUtilModule().provideAndroidUtil(), AndroidUtilModule().provideAndroidUtil())
     }
 }
