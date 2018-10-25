@@ -19,9 +19,7 @@ class AndroidUtilModule : AbstractModule() {
     @Provides
     @Singleton
     internal fun provideAndroidUtil(): AndroidUtil {
-        val pair = getOrCreateInstance(androidUtil) {
-            AndroidUtil()
-        }
+        val pair = getOrCreateInstance(androidUtil, { AndroidUtil() }, { instance -> SoftReference(instance) })
         androidUtil = pair.second
         return pair.first
     }

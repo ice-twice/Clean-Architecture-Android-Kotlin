@@ -21,12 +21,12 @@ class SchedulerModule : AbstractModule() {
     @Provides
     @Singleton
     internal fun provideBackgroundScheduler(): BackgroundScheduler {
-        val pair = getOrCreateInstance<BackgroundScheduler>(backgroundScheduler) {
+        val pair = getOrCreateInstance(backgroundScheduler, {
             object : BackgroundScheduler {
                 override val scheduler: Scheduler
                     get() = Schedulers.computation()
             }
-        }
+        }, { instance -> SoftReference(instance) })
         backgroundScheduler = pair.second
         return pair.first
     }
@@ -34,12 +34,12 @@ class SchedulerModule : AbstractModule() {
     @Provides
     @Singleton
     internal fun providePostExecutionScheduler(): PostExecutionScheduler {
-        val pair = getOrCreateInstance<PostExecutionScheduler>(postExecutionScheduler) {
+        val pair = getOrCreateInstance(postExecutionScheduler, {
             object : PostExecutionScheduler {
                 override val scheduler: Scheduler
                     get() = AndroidSchedulers.mainThread()
             }
-        }
+        }, { instance -> SoftReference(instance) })
         postExecutionScheduler = pair.second
         return pair.first
     }
