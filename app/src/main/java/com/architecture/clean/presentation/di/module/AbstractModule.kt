@@ -2,23 +2,12 @@ package com.architecture.clean.presentation.di.module
 
 import java.lang.ref.SoftReference
 
-abstract class AbstractModule<T> {
-    protected lateinit var reference: SoftReference<T?>
-
-    protected fun getInstance(createInstance: () -> T): T {
-        if (!::reference.isInitialized) {
-            reference = SoftReference(null)
-        }
-
-        var instance = reference.get()
-        if (instance == null) {
-            instance = createInstance()
-            reference = SoftReference(instance)
-        }
-        // shouldn't be null
-        return instance!!
-    }
-
+/**
+ * Abstract module.
+ *
+ * All modules should wrap their held objects with SoftReference.
+ */
+abstract class AbstractModule {
     fun <T> getOrCreateInstance(reference: SoftReference<T>?, createInstance: () -> T): Pair<T, SoftReference<T>> {
         var instance = reference?.get()
         val newReference: SoftReference<T>?
