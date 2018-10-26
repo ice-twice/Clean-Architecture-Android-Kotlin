@@ -20,104 +20,48 @@
             android:paddingEnd="@dimen/dp4"
             android:paddingBottom="@dimen/dp4">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="@dimen/dp4">
+            <androidx.cardview.widget.CardView style="@style/TopicCard">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
+                    style="@style/TopicCardImage"
                     android:src="@drawable/topic_logo1" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/topic_name_background"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:lines="1"
-                    android:padding="@dimen/dp8"
-                    android:text="@string/what_is_clean_architecture"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    style="@style/TopicCardText"
+                    android:text="@string/what_is_clean_architecture" />
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="@dimen/dp4">
+            <androidx.cardview.widget.CardView style="@style/TopicCard">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
+                    style="@style/TopicCardImage"
                     android:src="@drawable/topic_logo2" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/topic_name_background"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:lines="1"
-                    android:padding="@dimen/dp8"
-                    android:text="@string/advantages_of_clean_architecture"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    style="@style/TopicCardText"
+                    android:text="@string/advantages_of_clean_architecture" />
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="@dimen/dp4">
+            <androidx.cardview.widget.CardView style="@style/TopicCard">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
+                    style="@style/TopicCardImage"
                     android:src="@drawable/topic_logo3" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/topic_name_background"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:lines="1"
-                    android:padding="@dimen/dp8"
-                    android:text="@string/about_author"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    style="@style/TopicCardText"
+                    android:text="@string/about_author" />
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="@dimen/dp4">
+            <androidx.cardview.widget.CardView style="@style/TopicCard">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
+                    style="@style/TopicCardImage"
                     android:src="@drawable/topic_logo4" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/topic_name_background"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:lines="1"
-                    android:padding="@dimen/dp8"
-                    android:text="@string/an_example_of_saving_ui_states_of_a_multi_pane_window"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp" />
+                    style="@style/TopicCardText"
+                    android:text="@string/an_example_of_saving_ui_states_of_a_multi_pane_window" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
