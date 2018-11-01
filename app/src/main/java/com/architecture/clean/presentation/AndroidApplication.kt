@@ -8,7 +8,9 @@ import com.squareup.leakcanary.LeakCanary
 
 class AndroidApplication : Application() {
     val moduleProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
-        ModuleProvider()
+        val moduleProvider = ModuleProvider()
+        moduleProvider.contextModule.context = this
+        return@lazy moduleProvider
     }
 
     override fun onCreate() {

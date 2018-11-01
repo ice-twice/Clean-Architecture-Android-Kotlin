@@ -1,6 +1,7 @@
 package com.architecture.clean.presentation.di
 
 import com.architecture.clean.presentation.di.module.AndroidUtilModule
+import com.architecture.clean.presentation.di.module.ContextModule
 import com.architecture.clean.presentation.di.module.NavigationModule
 import com.architecture.clean.presentation.di.module.SchedulerModule
 
@@ -18,5 +19,9 @@ class ModuleProvider {
 
     val navigatorModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         NavigationModule()
+    }
+
+    val contextModule by lazy(mode = LazyThreadSafetyMode.NONE) {
+        ContextModule()
     }
 }
