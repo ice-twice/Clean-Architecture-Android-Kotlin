@@ -8,13 +8,14 @@ import io.reactivex.observers.DisposableCompletableObserver
 /**
  * Abstract class for Completable.
  */
-abstract class CompletableInteractor(override val backgroundScheduler: BackgroundScheduler, override val postExecutionScheduler: PostExecutionScheduler) : BaseInteractor(backgroundScheduler, postExecutionScheduler) {
+abstract class CompletableInteractor<Param>(override val backgroundScheduler: BackgroundScheduler, override val postExecutionScheduler: PostExecutionScheduler) : BaseInteractor<Completable, Param>(backgroundScheduler, postExecutionScheduler) {
 
     /**
      * Execute the operation.
      */
-    fun execute(completable: Completable, disposableCompletableObserver: DisposableCompletableObserver) {
-        val newCompletable = completable.subscribeOn(backgroundScheduler.scheduler)
+    fun execute(param: Param, disposableCompletableObserver: DisposableCompletableObserver) {
+        val newCompletable = create(param)
+                .subscribeOn(backgroundScheduler.scheduler)
                 .observeOn(postExecutionScheduler.scheduler)
 
         val disposableObserver = newCompletable.subscribeWith(disposableCompletableObserver)

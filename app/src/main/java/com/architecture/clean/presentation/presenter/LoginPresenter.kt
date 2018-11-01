@@ -41,7 +41,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
         view.hideKeyboard()
         loginLoadingLiveEvent.value(true)
         loginFailureLiveEvent.stopped = true
-        loginInteractor.login(login, password, object : DisposableCompletableObserver() {
+        loginInteractor.execute(LoginInteractor.LoginParam(login, password), object : DisposableCompletableObserver() {
             override fun onComplete() {
                 loginSuccessLiveEvent.value(null).stopped = true
                 loginLoadingLiveEvent.value(false).stopped = true

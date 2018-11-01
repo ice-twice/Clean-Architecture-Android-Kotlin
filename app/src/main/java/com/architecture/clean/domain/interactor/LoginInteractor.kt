@@ -5,30 +5,27 @@ import com.architecture.clean.domain.interactor.abstractinteractor.CompletableIn
 import com.architecture.clean.domain.scheduler.BackgroundScheduler
 import com.architecture.clean.domain.scheduler.PostExecutionScheduler
 import io.reactivex.Completable
-import io.reactivex.observers.DisposableCompletableObserver
 import javax.inject.Inject
 
 /**
  * The login interactor.
  */
-class LoginInteractor @Inject constructor(override val backgroundScheduler: BackgroundScheduler, override val postExecutionScheduler: PostExecutionScheduler) : CompletableInteractor(backgroundScheduler, postExecutionScheduler) {
+class LoginInteractor @Inject constructor(override val backgroundScheduler: BackgroundScheduler, override val postExecutionScheduler: PostExecutionScheduler) : CompletableInteractor<LoginInteractor.LoginParam>(backgroundScheduler, postExecutionScheduler) {
 
-    /**
-     * Handle the login operation.
-     */
-    fun login(login: String, password: String, disposableCompletableObserver: DisposableCompletableObserver) {
-        val completable = Completable.create { emitter ->
+    override fun create(param: LoginParam): Completable {
+        return Completable.create { emitter ->
             try {
                 Thread.sleep(2000)
             } catch (e: Exception) {
                 // empty
             }
-            if (login.isEmpty() && password.isEmpty()) {
+            if (param.login.isEmpty() && param.password.isEmpty()) {
                 emitter.onComplete()
             } else {
                 emitter.tryOnError(WrongLoginOrPassword())
             }
         }
-        execute(completable, disposableCompletableObserver)
     }
+
+    class LoginParam(val login: String, val password: String)
 }
