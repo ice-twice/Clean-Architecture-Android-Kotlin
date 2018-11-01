@@ -27,5 +27,5 @@ class LoginInteractor @Inject constructor(override val backgroundScheduler: Back
         }
     }
 
-    class LoginParam(val login: String, val password: String)
+    data class LoginParam(val login: String, val password: String)
 }
