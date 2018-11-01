@@ -12,6 +12,7 @@ import com.architecture.clean.presentation.interfaces.LoginView
 import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.presenter.LoginPresenter
 import com.architecture.clean.presentation.util.AndroidUtil
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -76,7 +77,7 @@ class LoginFragment : BaseFragment(), LoginView {
         login_form.visibility = View.VISIBLE
     }
 
-    override fun showLoginError() {
+    override fun showLoginParamError() {
         Toast.makeText(context, "Login failed!", Toast.LENGTH_LONG).show()
     }
 
@@ -87,4 +88,6 @@ class LoginFragment : BaseFragment(), LoginView {
     override fun hideKeyboard() {
         androidUtil.hideKeyboard(context, view)
     }
+
+    override fun showInternetIsNotAvailableError() = Snackbar.make(view!!, getString(R.string.internet_connection_is_not_available), Snackbar.LENGTH_SHORT).show()
 }

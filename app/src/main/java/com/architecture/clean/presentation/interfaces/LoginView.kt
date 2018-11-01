@@ -9,7 +9,7 @@ interface LoginView : ProgressInterface {
     /**
      * Show the login error.
      */
-    fun showLoginError()
+    fun showLoginParamError()
 
     /**
      * Show the main screen.
@@ -20,4 +20,9 @@ interface LoginView : ProgressInterface {
      * Hide the keyboard.
      */
     fun hideKeyboard()
+
+    /**
+     * Show show internet is not available error.
+     */
+    fun showInternetIsNotAvailableError()
 }
