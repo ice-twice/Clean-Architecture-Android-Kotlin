@@ -73,7 +73,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
     inner class ViewLayoutLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun create() {
-            loginLoadingLiveEvent.observe(viewLifecycleOwner, Observer {
+            loginLoadingLiveEvent.observe(viewLayoutLifecycleOwner, Observer {
                 if (it) {
                     view.showLoading()
                 } else {
@@ -81,14 +81,14 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
                 }
             })
 
-            loginFailureLiveEvent.observe(viewLifecycleOwner, Observer {
+            loginFailureLiveEvent.observe(viewLayoutLifecycleOwner, Observer {
                 when (it) {
                     is WrongLoginOrPassword -> view.showLoginParamError()
                     is InternetConnectionIsNotAvailableException -> view.showInternetIsNotAvailableError()
                 }
             })
 
-            loginSuccessLiveEvent.observe(viewLifecycleOwner, Observer {
+            loginSuccessLiveEvent.observe(viewLayoutLifecycleOwner, Observer {
                 view.showMain()
             })
         }
