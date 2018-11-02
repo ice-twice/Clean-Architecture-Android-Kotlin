@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/dp16"
-            android:paddingTop="140dp"
+            android:paddingTop="110dp"
             android:paddingRight="@dimen/dp16"
             android:paddingBottom="@dimen/dp16">
 
@@ -48,7 +48,7 @@
                 android:id="@+id/login_field_wrapper"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="110dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title">
@@ -99,6 +99,7 @@
                 app:layout_constraintTop_toBottomOf="@id/password_field_wrapper" />
 
             <TextView
+                android:id="@+id/login_hint"
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -108,6 +109,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sign_button" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/this_screen_represents_the_login_operation_the_purpose_of_this_screen_is_to_show_the_possibility_to_save_ui_state_after_changing_configuration_like_screen_rotation"
+                android:textColor="#3c000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_hint" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
