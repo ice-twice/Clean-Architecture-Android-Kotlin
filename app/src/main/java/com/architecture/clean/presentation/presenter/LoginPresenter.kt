@@ -18,9 +18,8 @@ import javax.inject.Inject
  * Live data is used in the presenter to respect the lifecycle of a view.
  */
 class LoginPresenter @Inject constructor(private val loginInteractor: LoginInteractor) : BasePresenter<LoginView>(), LifecycleObserver {
-    override var viewLifecycleObserver: LifecycleObserver = ViewLifecycleObserver()
-
-    override var viewLayoutLifecycleObserver: LifecycleObserver = ViewLayoutLifecycleObserver()
+    override var viewLifecycleObserver: LifecycleObserver? = ViewLifecycleObserver()
+    override var viewLayoutLifecycleObserver: LifecycleObserver? = ViewLayoutLifecycleObserver()
 
 
     private val loginLoadingLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {

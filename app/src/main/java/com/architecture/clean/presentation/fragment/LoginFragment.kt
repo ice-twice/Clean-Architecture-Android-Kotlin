@@ -39,24 +39,23 @@ class LoginFragment : BaseFragment(), LoginView {
                 .authenticationRepositoryModule(getModuleProvider().authenticationRepositoryModule)
                 .build()
                 .inject(this)
-
-        loginPresenter.apply {
-            // set view
-            view = this@LoginFragment
-            // observe fragment lifecycle
-            observeViewLifecycle(this@LoginFragment)
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // the first method where it is safe to access the view lifecycle is onCreateView()
-        // observe the fragment layout lifecycle
-        loginPresenter.setViewLayoutLifecycleAndObserve(viewLifecycleOwner)
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loginPresenter.apply {
+            this.view = this@LoginFragment
+            // observe fragment lifecycle
+            observeViewLifecycle(this@LoginFragment)
+            // the first method where it is safe to access the view lifecycle is onCreateView()
+            // observe the fragment layout lifecycle
+            setViewLayoutLifecycleAndObserve(viewLifecycleOwner)
+        }
 
         password_field.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
