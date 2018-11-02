@@ -12,9 +12,9 @@ import javax.inject.Inject
 /**
  * The authentication repository.
  */
-class AuthenticationRepositoryImpl @Inject constructor(val context: Context, val androidUtil: AndroidUtil) : AuthenticationRepository {
+class AuthenticationRepositoryImpl @Inject constructor(val context: Context, private val androidUtil: AndroidUtil) : AuthenticationRepository {
     override fun login(param: LoginInteractor.LoginParam): Completable {
-        var completable: Completable? = null;
+        var completable: Completable? = null
         when (androidUtil.isInternetConnection(context)) {
             true -> {
                 completable = Completable.create { emitter ->

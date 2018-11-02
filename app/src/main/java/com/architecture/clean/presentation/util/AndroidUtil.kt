@@ -24,6 +24,6 @@ class AndroidUtil {
      */
     fun isInternetConnection(context: Context): Boolean {
         val networkInfo = (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
-        return if (networkInfo == null) false else networkInfo.isConnected
+        return networkInfo?.isConnected ?: false
     }
 }

@@ -24,6 +24,7 @@
 
                 <ImageView
                     style="@style/TopicCardImage"
+                    android:contentDescription="@string/topic_image"
                     android:src="@drawable/topic_logo1" />
 
                 <TextView
@@ -35,6 +36,7 @@
 
                 <ImageView
                     style="@style/TopicCardImage"
+                    android:contentDescription="@string/topic_image"
                     android:src="@drawable/topic_logo2" />
 
                 <TextView
@@ -46,6 +48,7 @@
 
                 <ImageView
                     style="@style/TopicCardImage"
+                    android:contentDescription="@string/topic_image"
                     android:src="@drawable/topic_logo3" />
 
                 <TextView
@@ -57,6 +60,7 @@
 
                 <ImageView
                     style="@style/TopicCardImage"
+                    android:contentDescription="@string/topic_image"
                     android:src="@drawable/topic_logo4" />
 
                 <TextView
