@@ -27,6 +27,8 @@ class LoginFragment : BaseFragment(), LoginView {
     @Inject
     lateinit var navigator: Navigator
 
+    override fun layoutId() : Int = R.layout.fragment_login
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
@@ -39,10 +41,6 @@ class LoginFragment : BaseFragment(), LoginView {
                 .authenticationRepositoryModule(getModuleProvider().authenticationRepositoryModule)
                 .build()
                 .inject(this)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
