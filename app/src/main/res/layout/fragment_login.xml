@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/dp16"
-            android:paddingTop="110dp"
+            android:paddingTop="@dimen/login_margin"
             android:paddingRight="@dimen/dp16"
             android:paddingBottom="@dimen/dp16">
 
@@ -48,7 +48,7 @@
                 android:id="@+id/login_field_wrapper"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="@dimen/login_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title">
