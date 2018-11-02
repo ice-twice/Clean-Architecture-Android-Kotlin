@@ -35,6 +35,8 @@ class LoginFragment : BaseFragment(), LoginView {
                 .schedulerModule(getModuleProvider().schedulerModule)
                 .androidUtilModule(getModuleProvider().androidUtilModule)
                 .navigationModule(getModuleProvider().navigatorModule)
+                .contextModule(getModuleProvider().contextModule)
+                .authenticationRepositoryModule(getModuleProvider().authenticationRepositoryModule)
                 .build()
                 .inject(this)
 

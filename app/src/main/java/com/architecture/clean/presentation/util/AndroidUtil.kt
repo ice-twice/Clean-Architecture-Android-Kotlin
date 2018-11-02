@@ -23,6 +23,7 @@ class AndroidUtil {
      * Check whether internet connection is available.
      */
     fun isInternetConnection(context: Context): Boolean {
-        return (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo.isConnected
+        val networkInfo = (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
+        return if (networkInfo == null) false else networkInfo.isConnected
     }
 }

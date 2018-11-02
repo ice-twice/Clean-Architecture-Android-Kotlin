@@ -1,9 +1,6 @@
 package com.architecture.clean.presentation.di
 
-import com.architecture.clean.presentation.di.module.AndroidUtilModule
-import com.architecture.clean.presentation.di.module.ContextModule
-import com.architecture.clean.presentation.di.module.NavigationModule
-import com.architecture.clean.presentation.di.module.SchedulerModule
+import com.architecture.clean.presentation.di.module.*
 
 /**
  * This class is used to provide modules.
@@ -23,5 +20,9 @@ class ModuleProvider {
 
     val contextModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         ContextModule()
+    }
+
+    val authenticationRepositoryModule by lazy(mode = LazyThreadSafetyMode.NONE) {
+        AuthenticationRepositoryModule()
     }
 }
