@@ -2,7 +2,7 @@ package com.architecture.clean.data
 
 import android.content.Context
 import com.architecture.clean.domain.exception.InternetConnectionIsNotAvailableException
-import com.architecture.clean.domain.exception.WrongLoginOrPassword
+import com.architecture.clean.domain.exception.WrongLoginOrPasswordException
 import com.architecture.clean.domain.interactor.LoginInteractor
 import com.architecture.clean.domain.repository.AuthenticationRepository
 import com.architecture.clean.presentation.util.AndroidUtil
@@ -26,7 +26,7 @@ class AuthenticationRepositoryImpl @Inject constructor(val context: Context, pri
                     if (param.login.isEmpty() && param.password.isEmpty()) {
                         emitter.onComplete()
                     } else {
-                        emitter.tryOnError(WrongLoginOrPassword())
+                        emitter.tryOnError(WrongLoginOrPasswordException())
                     }
                 }
             }

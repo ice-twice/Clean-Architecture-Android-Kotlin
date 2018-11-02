@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import com.architecture.clean.domain.exception.InternetConnectionIsNotAvailableException
-import com.architecture.clean.domain.exception.WrongLoginOrPassword
+import com.architecture.clean.domain.exception.WrongLoginOrPasswordException
 import com.architecture.clean.domain.interactor.LoginInteractor
 import com.architecture.clean.presentation.component.StoppableLiveData
 import com.architecture.clean.presentation.interfaces.LoginView
@@ -82,7 +82,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
 
             loginFailureLiveEvent.observe(viewLayoutLifecycleOwner, Observer {
                 when (it) {
-                    is WrongLoginOrPassword -> view.showLoginParamError()
+                    is WrongLoginOrPasswordException -> view.showLoginParamError()
                     is InternetConnectionIsNotAvailableException -> view.showInternetIsNotAvailableError()
                 }
             })
