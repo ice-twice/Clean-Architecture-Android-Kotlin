@@ -5,6 +5,7 @@ import android.view.View
 import com.architecture.clean.R
 import com.architecture.clean.presentation.di.component.DaggerTopicsComponent
 import com.architecture.clean.presentation.interfaces.TopicsView
+import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.presenter.TopicsPresenter
 import kotlinx.android.synthetic.main.fragment_topic_list.*
 import javax.inject.Inject
@@ -15,13 +16,17 @@ import javax.inject.Inject
 class TopicListFragment : BaseFragment(), TopicsView {
     @Inject
     lateinit var topicsPresenter: TopicsPresenter
+    @Inject
+    lateinit var navigator: Navigator
 
     override fun layoutId(): Int = R.layout.fragment_topic_list
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        DaggerTopicsComponent.create()
+        DaggerTopicsComponent.builder()
+                .navigationModule(getModuleProvider().navigatorModule)
+                .build()
                 .inject(this)
     }
 
@@ -35,6 +40,6 @@ class TopicListFragment : BaseFragment(), TopicsView {
     }
 
     override fun showCleanArchitectureView() {
-        //todo
+        navigator.showCleanArchitectureView(context)
     }
 }

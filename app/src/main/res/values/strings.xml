@@ -13,4 +13,5 @@
     <string name="this_screen_represents_the_login_operation_the_purpose_of_this_screen_is_to_show_the_possibility_to_save_ui_state_after_changing_configuration_like_screen_rotation">This screen represents the login operation. The purpose of this screen is to show the possibility to save ui state after changing configuration like screen rotation.</string>
     <string name="topic_image">Topic image</string>
     <string name="topics">Topics</string>
+    <string name="timer">Timer</string>
 </resources>
