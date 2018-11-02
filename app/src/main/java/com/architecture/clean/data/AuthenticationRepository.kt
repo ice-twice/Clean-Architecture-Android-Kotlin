@@ -19,7 +19,7 @@ class AuthenticationRepositoryImpl @Inject constructor(val context: Context, pri
             true -> {
                 completable = Completable.create { emitter ->
                     try {
-                        Thread.sleep(2000)
+                        Thread.sleep(1000)
                     } catch (e: Exception) {
                         // empty
                     }
