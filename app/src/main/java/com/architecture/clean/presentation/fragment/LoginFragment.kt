@@ -31,8 +31,6 @@ class LoginFragment : BaseFragment(), LoginView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        retainInstance = true
-
         DaggerLoginComponent.builder()
                 .schedulerModule(getModuleProvider().schedulerModule)
                 .androidUtilModule(getModuleProvider().androidUtilModule)

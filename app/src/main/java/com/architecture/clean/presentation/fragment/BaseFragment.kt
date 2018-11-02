@@ -18,8 +18,12 @@ abstract class BaseFragment : Fragment() {
         return (activity?.application as AndroidApplication).moduleProvider
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutId(), container, false)
     }
-
 }
