@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/login_hint"
-                android:textColor="#3c000000"
+                android:textColor="@color/screen_hint_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sign_button" />
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/this_screen_represents_the_login_operation_the_purpose_of_this_screen_is_to_show_the_possibility_to_save_ui_state_after_changing_configuration_like_screen_rotation"
-                android:textColor="#3c000000"
+                android:textColor="@color/screen_hint_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/login_hint" />
