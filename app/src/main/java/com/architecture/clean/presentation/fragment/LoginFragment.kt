@@ -44,7 +44,7 @@ class LoginFragment : BaseFragment(), LoginView {
             // set view
             view = this@LoginFragment
             // observe fragment lifecycle
-            setViewLifecycleAndObserve(this@LoginFragment)
+            observeViewLifecycle(this@LoginFragment)
         }
     }
 

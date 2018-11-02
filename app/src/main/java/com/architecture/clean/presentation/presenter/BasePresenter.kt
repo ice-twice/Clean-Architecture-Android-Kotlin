@@ -8,13 +8,11 @@ import androidx.lifecycle.LifecycleOwner
  */
 abstract class BasePresenter<V : Any> {
     lateinit var view: V
-    protected lateinit var viewLifecycleOwner: LifecycleOwner
     internal lateinit var viewLayoutLifecycleOwner: LifecycleOwner
     protected open var viewLifecycleObserver = object : LifecycleObserver {}
     protected open var viewLayoutLifecycleObserver = object : LifecycleObserver {}
 
-    fun setViewLifecycleAndObserve(viewLifecycleOwner: LifecycleOwner) {
-        this.viewLifecycleOwner = viewLifecycleOwner
+    fun observeViewLifecycle(viewLifecycleOwner: LifecycleOwner) {
         viewLifecycleOwner.lifecycle.addObserver(viewLifecycleObserver)
     }
 
