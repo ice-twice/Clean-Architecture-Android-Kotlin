@@ -12,14 +12,17 @@
         android:id="@+id/start_timer_service"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/start_the_service"
         app:layout_constraintEnd_toStartOf="@id/stop_timer_service"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/stop_timer_service"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/stop_the_service"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/start_timer_service"
@@ -29,6 +32,7 @@
         android:id="@+id/seconds_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/loading"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

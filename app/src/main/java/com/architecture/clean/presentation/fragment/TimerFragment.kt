@@ -44,8 +44,24 @@ class TimerFragment : BaseFragment(), TimerView {
         }
     }
 
-    override fun startServiceTimer() {
-        context?.startService(Intent(context, TimerService::class.java))
+    override fun isServiceRunning(): Boolean {
+        return TimerService.isStarted
+    }
+
+    override fun disableStartServiceButton() {
+        start_timer_service.isEnabled = false
+    }
+
+    override fun enableStopServiceButton() {
+        stop_timer_service.isEnabled = true
+    }
+
+    override fun enableStartServiceButton() {
+        start_timer_service.isEnabled = true
+    }
+
+    override fun disableStopServiceButton() {
+        stop_timer_service.isEnabled = false
     }
 
     override fun registerTimeReceiver() {
@@ -54,21 +70,25 @@ class TimerFragment : BaseFragment(), TimerView {
                 .registerReceiver(secondsCountReceiver, IntentFilter(TimerService.SECONDS_COUNT_ACTION))
     }
 
+    override fun startServiceTimer() {
+        context?.startService(Intent(context, TimerService::class.java))
+    }
+
+    override fun stopServiceTimer() {
+        context?.stopService(Intent(context, TimerService::class.java))
+    }
+
     private inner class SecondsCountReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             timerPresenter.onUpdateTime(intent?.getIntExtra(TimerService.EXTRA_SECONDS_COUNT, 0))
         }
     }
 
-    override fun unregisterTimeReceiver() {
-        LocalBroadcastManager.getInstance(context!!).unregisterReceiver(secondsCountReceiver)
-    }
-
     override fun showTime(seconds: Int?) {
         seconds_count.text = seconds.toString()
     }
 
-    override fun stopServiceTimer() {
-        context?.stopService(Intent(context, TimerService::class.java))
+    override fun unregisterTimeReceiver() {
+        LocalBroadcastManager.getInstance(context!!).unregisterReceiver(secondsCountReceiver)
     }
 }

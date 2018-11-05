@@ -17,4 +17,5 @@
     <string name="this_is_example_of_using_the_timer_service_and_the_timer_broadcast_receiver">This is example of using the Timer Service and the Timer Broadcast Receiver.</string>
     <string name="stop_the_service">Stop the service</string>
     <string name="start_the_service">Start the service</string>
+    <string name="loading">Loading…</string>
 </resources>
