@@ -7,17 +7,15 @@ import androidx.lifecycle.LifecycleOwner
  * The base presenter class.
  */
 abstract class BasePresenter<V : Any> {
-    lateinit var view: V
-    internal lateinit var viewLayoutLifecycleOwner: LifecycleOwner
+    protected lateinit var view: V
+    protected lateinit var viewLayoutLifecycleOwner: LifecycleOwner
     protected open var viewLifecycleObserver: LifecycleObserver? = null
     protected open var viewLayoutLifecycleObserver: LifecycleObserver? = null
 
-    fun observeViewLifecycle(viewLifecycleOwner: LifecycleOwner) {
-        viewLifecycleOwner.lifecycle.addObserver(viewLifecycleObserver!!)
-    }
-
-    fun setViewLayoutLifecycleAndObserve(viewLayoutLifecycleOwner: LifecycleOwner) {
+    fun initialize(view: V, viewLifecycleOwner: LifecycleOwner, viewLayoutLifecycleOwner: LifecycleOwner) {
+        this.view = view
+        viewLifecycleObserver?.let { viewLifecycleOwner.lifecycle.addObserver(it) }
         this.viewLayoutLifecycleOwner = viewLayoutLifecycleOwner
-        viewLayoutLifecycleOwner.lifecycle.addObserver(viewLayoutLifecycleObserver!!)
+        viewLayoutLifecycleObserver?.let { viewLayoutLifecycleOwner.lifecycle.addObserver(it) }
     }
 }

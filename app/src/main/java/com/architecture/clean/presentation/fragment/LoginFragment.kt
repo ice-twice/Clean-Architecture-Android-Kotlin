@@ -43,15 +43,9 @@ class LoginFragment : BaseFragment(), LoginView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        loginPresenter.apply {
-            this.view = this@LoginFragment
-            // observe fragment lifecycle
-            observeViewLifecycle(this@LoginFragment)
-            // the first method where it is safe to access the view lifecycle is onCreateView()
-            // observe the fragment layout lifecycle
-            setViewLayoutLifecycleAndObserve(viewLifecycleOwner)
-        }
+        // observe fragment lifecycle and layout lifecycle
+        // the first method where it is safe to access the view lifecycle is onCreateView()
+        loginPresenter.initialize(this, this,viewLifecycleOwner )
 
         password_field.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {

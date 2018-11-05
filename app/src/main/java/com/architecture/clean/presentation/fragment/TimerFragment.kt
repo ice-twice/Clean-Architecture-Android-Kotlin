@@ -31,10 +31,7 @@ class TimerFragment : BaseFragment(), TimerView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        timerPresenter.view = this
-        timerPresenter.observeViewLifecycle(this)
-        timerPresenter.setViewLayoutLifecycleAndObserve(viewLifecycleOwner)
-
+        timerPresenter.initialize(this, this, viewLifecycleOwner)
     }
 
     override fun startTimer() {
