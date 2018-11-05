@@ -20,7 +20,7 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun onDestroy() {
-            // todo unregister receiver
+            view.unregisterTimeReceiver()
         }
     }
 

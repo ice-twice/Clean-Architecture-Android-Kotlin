@@ -19,4 +19,9 @@ interface TimerView {
      * Show time.
      */
     fun showTime(seconds: Int?)
+
+    /**
+     * Unregister a time receiver.
+     */
+    fun unregisterTimeReceiver()
 }

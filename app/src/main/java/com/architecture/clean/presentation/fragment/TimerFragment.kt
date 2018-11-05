@@ -22,6 +22,7 @@ class TimerFragment : BaseFragment(), TimerView {
 
     @Inject
     lateinit var timerPresenter: TimerPresenter
+    private lateinit var secondsCountReceiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +40,21 @@ class TimerFragment : BaseFragment(), TimerView {
         context?.startService(intent)
     }
 
-    override fun registerTimeReceiver() = LocalBroadcastManager.getInstance(context!!)
-            .registerReceiver(object : BroadcastReceiver() {
-                override fun onReceive(context: Context?, intent: Intent?) {
-                    timerPresenter.onUpdateTime(intent?.getIntExtra(TimerService.EXTRA_SECONDS_COUNT, 0))
-                }
-            }, IntentFilter(TimerService.SECONDS_COUNT_ACTION))
+    override fun registerTimeReceiver() {
+        secondsCountReceiver = SecondsCountReceiver()
+        LocalBroadcastManager.getInstance(context!!)
+                .registerReceiver(secondsCountReceiver, IntentFilter(TimerService.SECONDS_COUNT_ACTION))
+    }
+
+    private inner class SecondsCountReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            timerPresenter.onUpdateTime(intent?.getIntExtra(TimerService.EXTRA_SECONDS_COUNT, 0))
+        }
+    }
+
+    override fun unregisterTimeReceiver() {
+        LocalBroadcastManager.getInstance(context!!).unregisterReceiver(secondsCountReceiver)
+    }
 
     override fun showTime(seconds: Int?) {
         println("showTime = $seconds")
