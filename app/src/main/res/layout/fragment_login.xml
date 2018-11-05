@@ -61,7 +61,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:importantForAutofill="no" />
+                    android:autofillHints="no" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
