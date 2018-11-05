@@ -8,7 +8,7 @@ interface TimerView {
     /**
      * Start a timer.
      */
-    fun startTimer()
+    fun startServiceTimer()
 
     /**
      * Register a time receiver.
@@ -24,4 +24,9 @@ interface TimerView {
      * Unregister a time receiver.
      */
     fun unregisterTimeReceiver()
+
+    /**
+     * Stop the service timer.
+     */
+    fun stopServiceTimer()
 }

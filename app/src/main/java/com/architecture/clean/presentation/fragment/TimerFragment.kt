@@ -34,11 +34,18 @@ class TimerFragment : BaseFragment(), TimerView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         timerPresenter.initialize(this, this, viewLifecycleOwner)
+
+        start_timer_service.setOnClickListener {
+            timerPresenter.onClickStartService()
+        }
+
+        stop_timer_service.setOnClickListener {
+            timerPresenter.onClickStopService()
+        }
     }
 
-    override fun startTimer() {
-        val intent = Intent(context, TimerService::class.java)
-        context?.startService(intent)
+    override fun startServiceTimer() {
+        context?.startService(Intent(context, TimerService::class.java))
     }
 
     override fun registerTimeReceiver() {
@@ -59,5 +66,9 @@ class TimerFragment : BaseFragment(), TimerView {
 
     override fun showTime(seconds: Int?) {
         seconds_count.text = seconds.toString()
+    }
+
+    override fun stopServiceTimer() {
+        context?.stopService(Intent(context, TimerService::class.java))
     }
 }

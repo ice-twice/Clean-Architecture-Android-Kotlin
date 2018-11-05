@@ -14,8 +14,8 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
     protected inner class ViewLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onCreate() {
+            view.startServiceTimer()
             view.registerTimeReceiver()
-            view.startTimer()
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -35,5 +35,13 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
         if (remainSeconds != null) {
             view.showTime(remainSeconds)
         }
+    }
+
+    fun onClickStopService() {
+        view.stopServiceTimer()
+    }
+
+    fun onClickStartService() {
+        view.startServiceTimer()
     }
 }
