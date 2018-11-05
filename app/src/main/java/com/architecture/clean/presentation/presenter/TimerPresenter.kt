@@ -30,4 +30,10 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
 
         }
     }
+
+    fun onUpdateTime(remainSeconds: Int?) {
+        if (remainSeconds != null) {
+            view.showTime(remainSeconds)
+        }
+    }
 }

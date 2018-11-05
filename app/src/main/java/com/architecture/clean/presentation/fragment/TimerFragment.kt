@@ -42,7 +42,7 @@ class TimerFragment : BaseFragment(), TimerView {
     override fun registerTimeReceiver() = LocalBroadcastManager.getInstance(context!!)
             .registerReceiver(object : BroadcastReceiver() {
                 override fun onReceive(context: Context?, intent: Intent?) {
-                    showTime(intent?.getIntExtra(TimerService.EXTRA_SECONDS_COUNT, 0))
+                    timerPresenter.onUpdateTime(intent?.getIntExtra(TimerService.EXTRA_SECONDS_COUNT, 0))
                 }
             }, IntentFilter(TimerService.SECONDS_COUNT_ACTION))
 
