@@ -32,7 +32,7 @@ class TopicListFragment : BaseFragment(), TopicsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        topicsPresenter.initialize(this, this, viewLifecycleOwner)
+        topicsPresenter.initialize(this)
 
         clean_architecture.setOnClickListener {
             topicsPresenter.onClickCleanArchitecture()

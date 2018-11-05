@@ -17,42 +17,9 @@ import javax.inject.Inject
  *
  * Live data is used in the presenter to respect the lifecycle of a view.
  */
-class LoginPresenter @Inject constructor(private val loginInteractor: LoginInteractor) : BasePresenter<LoginView>(), LifecycleObserver {
-    override var viewLifecycleObserver: LifecycleObserver? = ViewLifecycleObserver()
-    override var viewLayoutLifecycleObserver: LifecycleObserver? = ViewLayoutLifecycleObserver()
-
-
-    private val loginLoadingLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        StoppableLiveData<Boolean>()
-    }
-
-    private val loginSuccessLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        StoppableLiveData<Void>()
-    }
-
-    private val loginFailureLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        StoppableLiveData<Throwable>()
-    }
-
-    /**
-     * Handle a click oт the login button.
-     */
-    internal fun clickLoginButton(login: String, password: String) {
-        view.hideKeyboard()
-        loginLoadingLiveEvent.value(true)
-        loginFailureLiveEvent.stopped = true
-        loginInteractor.execute(LoginInteractor.LoginParam(login, password), object : DisposableCompletableObserver() {
-            override fun onComplete() {
-                loginSuccessLiveEvent.value(null).stopped = true
-                loginLoadingLiveEvent.value(false).stopped = true
-            }
-
-            override fun onError(e: Throwable) {
-                loginLoadingLiveEvent.value(false).stopped = true
-                loginFailureLiveEvent.value(e)
-            }
-        })
-    }
+class LoginPresenter @Inject constructor(private val loginInteractor: LoginInteractor) : BasePresenterViewAndLayoutLifecycle<LoginView>(), LifecycleObserver {
+    override var viewLifecycleObserver: LifecycleObserver = ViewLifecycleObserver()
+    override var viewLayoutLifecycleObserver: LifecycleObserver = ViewLayoutLifecycleObserver()
 
     /**
      * This class is used to handle the view lifecycle.
@@ -91,5 +58,37 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
                 view.showMain()
             })
         }
+    }
+
+    private val loginLoadingLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        StoppableLiveData<Boolean>()
+    }
+
+    private val loginSuccessLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        StoppableLiveData<Void>()
+    }
+
+    private val loginFailureLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        StoppableLiveData<Throwable>()
+    }
+
+    /**
+     * Handle a click oт the login button.
+     */
+    internal fun clickLoginButton(login: String, password: String) {
+        view.hideKeyboard()
+        loginLoadingLiveEvent.value(true)
+        loginFailureLiveEvent.stopped = true
+        loginInteractor.execute(LoginInteractor.LoginParam(login, password), object : DisposableCompletableObserver() {
+            override fun onComplete() {
+                loginSuccessLiveEvent.value(null).stopped = true
+                loginLoadingLiveEvent.value(false).stopped = true
+            }
+
+            override fun onError(e: Throwable) {
+                loginLoadingLiveEvent.value(false).stopped = true
+                loginFailureLiveEvent.value(e)
+            }
+        })
     }
 }
