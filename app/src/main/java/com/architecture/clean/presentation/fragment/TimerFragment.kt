@@ -64,6 +64,14 @@ class TimerFragment : BaseFragment(), TimerView {
         stop_timer_service.isEnabled = false
     }
 
+    override fun setServiceStoppedText() {
+        seconds_count.text = getString(R.string.service_stopped)
+    }
+
+    override fun setLoadingText() {
+        seconds_count.text = getString(R.string.loading)
+    }
+
     override fun registerTimeReceiver() {
         secondsCountReceiver = SecondsCountReceiver()
         LocalBroadcastManager.getInstance(context!!)

@@ -12,20 +12,16 @@ import java.util.concurrent.TimeUnit
 // todo add presenter
 class TimerService : IntentService("TimerService") {
     private val seconds = 20
-    private var isCancelled = false
 
     override fun onHandleIntent(intent: Intent?) {
-        // start only once
-        if (isStarted) return
         isStarted = true
         var remainSeconds = seconds
         while (remainSeconds > 0) {
-            if (isCancelled) break
             TimeUnit.SECONDS.sleep(1L)
             remainSeconds--
+            if (!isStarted) break
             LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(Intent(SECONDS_COUNT_ACTION).putExtra(EXTRA_SECONDS_COUNT, remainSeconds))
         }
-        isCancelled = false
     }
 
     companion object {
@@ -36,7 +32,6 @@ class TimerService : IntentService("TimerService") {
 
     override fun onDestroy() {
         super.onDestroy()
-        isCancelled = true
         isStarted = false
     }
 }

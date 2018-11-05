@@ -54,4 +54,14 @@ interface TimerView {
      * Disable the stop service button.
      */
     fun disableStopServiceButton()
+
+    /**
+     * Set service stopped text.
+     */
+    fun setServiceStoppedText()
+
+    /**
+     * Set loading text.
+     */
+    fun setLoadingText()
 }

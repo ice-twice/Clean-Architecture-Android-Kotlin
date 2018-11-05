@@ -14,14 +14,6 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
     protected inner class ViewLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onCreate() {
-            val isServiceRunning = view.isServiceRunning()
-            if (isServiceRunning) {
-                view.disableStartServiceButton()
-                view.enableStopServiceButton()
-            } else {
-                view.enableStartServiceButton()
-                view.disableStopServiceButton()
-            }
             view.registerTimeReceiver()
         }
 
@@ -34,7 +26,15 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
     protected inner class ViewLayoutLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun create() {
-
+            if (view.isServiceRunning()) {
+                view.disableStartServiceButton()
+                view.enableStopServiceButton()
+                view.setLoadingText()
+            } else {
+                view.enableStartServiceButton()
+                view.disableStopServiceButton()
+                view.setServiceStoppedText()
+            }
         }
     }
 
@@ -42,12 +42,14 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
         view.startServiceTimer()
         view.disableStartServiceButton()
         view.enableStopServiceButton()
+        view.setLoadingText()
     }
 
     fun onClickStopService() {
         view.stopServiceTimer()
         view.enableStartServiceButton()
         view.disableStopServiceButton()
+        view.setServiceStoppedText()
     }
 
     fun onUpdateTime(remainSeconds: Int?) {
