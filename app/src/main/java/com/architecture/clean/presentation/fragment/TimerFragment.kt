@@ -12,6 +12,7 @@ import com.architecture.clean.presentation.di.component.DaggerTimerComponent
 import com.architecture.clean.presentation.interfaces.TimerView
 import com.architecture.clean.presentation.presenter.TimerPresenter
 import com.architecture.clean.presentation.service.TimerService
+import kotlinx.android.synthetic.main.fragment_timer.*
 import javax.inject.Inject
 
 /**
@@ -57,6 +58,6 @@ class TimerFragment : BaseFragment(), TimerView {
     }
 
     override fun showTime(seconds: Int?) {
-        println("showTime = $seconds")
+        seconds_count.text = seconds.toString()
     }
 }
