@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
  * Timer service.
  */
 
-
+// todo add presenter
 class TimerService : IntentService("TimerService") {
     private val seconds = 20
     private var isStarted = false

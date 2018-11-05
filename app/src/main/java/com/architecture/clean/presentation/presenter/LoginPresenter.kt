@@ -25,7 +25,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
     /**
      * This class is used to handle the view lifecycle.
      */
-    inner class ViewLifecycleObserver : LifecycleObserver {
+    protected inner class ViewLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun destroy() {
             loginInteractor.dispose()
@@ -37,7 +37,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
      *
      * This is useful to restore the view state after changing the screen orientation.
      */
-    inner class ViewLayoutLifecycleObserver : LifecycleObserver {
+    protected inner class ViewLayoutLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun create() {
             loginLoadingLiveEvent.observe(viewLayoutLifecycleOwner, Observer {

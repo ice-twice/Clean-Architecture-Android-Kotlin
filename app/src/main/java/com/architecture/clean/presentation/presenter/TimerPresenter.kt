@@ -11,7 +11,7 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
     override var viewLifecycleObserver: LifecycleObserver = ViewLifecycleObserver()
     override var viewLayoutLifecycleObserver: LifecycleObserver = ViewLayoutLifecycleObserver()
 
-    inner class ViewLifecycleObserver : LifecycleObserver {
+    protected inner class ViewLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onCreate() {
             view.registerTimeReceiver()
@@ -24,7 +24,7 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
         }
     }
 
-    inner class ViewLayoutLifecycleObserver : LifecycleObserver {
+    protected inner class ViewLayoutLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun create() {
 
