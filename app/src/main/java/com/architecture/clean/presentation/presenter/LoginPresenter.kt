@@ -9,6 +9,7 @@ import com.architecture.clean.domain.exception.WrongLoginOrPasswordException
 import com.architecture.clean.domain.interactor.LoginInteractor
 import com.architecture.clean.presentation.component.StoppableLiveData
 import com.architecture.clean.presentation.interfaces.LoginView
+import com.architecture.clean.presentation.presenter.base.BasePresenterViewAndLayoutLifecycle
 import io.reactivex.observers.DisposableCompletableObserver
 import javax.inject.Inject
 

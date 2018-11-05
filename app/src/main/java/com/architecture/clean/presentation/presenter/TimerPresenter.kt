@@ -4,6 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.architecture.clean.presentation.interfaces.TimerView
+import com.architecture.clean.presentation.presenter.base.BasePresenterViewAndLayoutLifecycle
 import javax.inject.Inject
 
 class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle<TimerView>() {
