@@ -31,11 +31,6 @@ interface TimerView {
     fun stopServiceTimer()
 
     /**
-     * Is the service running.
-     */
-    fun isServiceRunning(): Boolean
-
-    /**
      * Disable the start service button.
      */
     fun disableStartServiceButton()

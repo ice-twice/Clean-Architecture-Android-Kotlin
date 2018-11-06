@@ -7,7 +7,6 @@ import android.view.View
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.architecture.clean.R
 import com.architecture.clean.presentation.di.component.DaggerTimerComponent
-import com.architecture.clean.presentation.interfaces.TimerServiceView
 import com.architecture.clean.presentation.interfaces.TimerView
 import com.architecture.clean.presentation.presenter.TimerPresenter
 import com.architecture.clean.presentation.service.TimerService
@@ -21,7 +20,6 @@ class TimerFragment : BaseFragment(), TimerView {
     override fun layoutId(): Int = R.layout.fragment_timer
 
     private lateinit var timerServiceConnection: ServiceConnection
-    private lateinit var timerService: TimerServiceView
 
     @Inject
     lateinit var timerPresenter: TimerPresenter
@@ -44,10 +42,6 @@ class TimerFragment : BaseFragment(), TimerView {
         stop_timer_service.setOnClickListener {
             timerPresenter.onClickStopService()
         }
-    }
-
-    override fun isServiceRunning(): Boolean {
-        return timerService.isServiceStarted()
     }
 
     override fun disableStartServiceButton() {
@@ -87,11 +81,11 @@ class TimerFragment : BaseFragment(), TimerView {
         timerServiceConnection = object : ServiceConnection {
 
             override fun onServiceConnected(className: ComponentName, timerServiceBinder: IBinder) {
-                timerService = (timerServiceBinder as TimerService.TimerServiceBinder).getTimerService()
+                timerPresenter.onServiceConnected((timerServiceBinder as TimerService.TimerServiceBinder).getTimerService())
             }
 
             override fun onServiceDisconnected(arg0: ComponentName) {
-                // empty
+                timerPresenter.onServiceDisconnected()
             }
         }
         context?.bindService(Intent(context, TimerService::class.java), timerServiceConnection, Context.BIND_AUTO_CREATE)
