@@ -64,4 +64,14 @@ interface TimerView {
      * Set loading text.
      */
     fun setLoadingText()
+
+    /**
+     * Bind to the service.
+     */
+    fun bindService()
+
+    /**
+     * Unbind the service.
+     */
+    fun unbindService()
 }

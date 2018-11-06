@@ -2,6 +2,8 @@ package com.architecture.clean.presentation.service
 
 import android.app.IntentService
 import android.content.Intent
+import android.os.Binder
+import android.os.IBinder
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.architecture.clean.presentation.di.component.DaggerTimerServiceComponent
 import com.architecture.clean.presentation.interfaces.TimerServiceView
@@ -15,6 +17,11 @@ import javax.inject.Inject
 class TimerService : IntentService("TimerService"), TimerServiceView {
     @Inject
     lateinit var timerServicePresenter: TimerServicePresenter
+
+
+    private val timerServiceBinder by lazy(mode = LazyThreadSafetyMode.NONE) {
+        TimerServiceBinder()
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -48,5 +55,15 @@ class TimerService : IntentService("TimerService"), TimerServiceView {
     override fun onDestroy() {
         super.onDestroy()
         isStarted = false
+    }
+
+    override fun onBind(intent: Intent?): IBinder? {
+        return timerServiceBinder
+    }
+
+    inner class TimerServiceBinder : Binder() {
+        fun getTimerService(): TimerService {
+            return this@TimerService
+        }
     }
 }

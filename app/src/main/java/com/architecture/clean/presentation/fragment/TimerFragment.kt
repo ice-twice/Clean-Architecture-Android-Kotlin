@@ -1,14 +1,13 @@
 package com.architecture.clean.presentation.fragment
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.os.Bundle
+import android.os.IBinder
 import android.view.View
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.architecture.clean.R
 import com.architecture.clean.presentation.di.component.DaggerTimerComponent
+import com.architecture.clean.presentation.interfaces.TimerServiceView
 import com.architecture.clean.presentation.interfaces.TimerView
 import com.architecture.clean.presentation.presenter.TimerPresenter
 import com.architecture.clean.presentation.service.TimerService
@@ -20,6 +19,9 @@ import javax.inject.Inject
  */
 class TimerFragment : BaseFragment(), TimerView {
     override fun layoutId(): Int = R.layout.fragment_timer
+
+    private lateinit var timerServiceConnection: ServiceConnection
+    private lateinit var timerService: TimerServiceView
 
     @Inject
     lateinit var timerPresenter: TimerPresenter
@@ -45,7 +47,7 @@ class TimerFragment : BaseFragment(), TimerView {
     }
 
     override fun isServiceRunning(): Boolean {
-        return TimerService.isStarted
+        return timerService.isServiceStarted()
     }
 
     override fun disableStartServiceButton() {
@@ -76,6 +78,27 @@ class TimerFragment : BaseFragment(), TimerView {
         secondsCountReceiver = SecondsCountReceiver()
         LocalBroadcastManager.getInstance(context!!)
                 .registerReceiver(secondsCountReceiver, IntentFilter(TimerService.SECONDS_COUNT_ACTION))
+    }
+
+    /**
+     * Bind to the service to get the service instance to know if the service was started/
+     */
+    override fun bindService() {
+        timerServiceConnection = object : ServiceConnection {
+
+            override fun onServiceConnected(className: ComponentName, timerServiceBinder: IBinder) {
+                timerService = (timerServiceBinder as TimerService.TimerServiceBinder).getTimerService()
+            }
+
+            override fun onServiceDisconnected(arg0: ComponentName) {
+                // empty
+            }
+        }
+        context?.bindService(Intent(context, TimerService::class.java), timerServiceConnection, Context.BIND_AUTO_CREATE)
+    }
+
+    override fun unbindService() {
+        context?.unbindService(timerServiceConnection)
     }
 
     override fun startServiceTimer() {

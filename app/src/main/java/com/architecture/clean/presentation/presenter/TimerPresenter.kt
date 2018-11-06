@@ -7,6 +7,9 @@ import com.architecture.clean.presentation.interfaces.TimerView
 import com.architecture.clean.presentation.presenter.base.BasePresenterViewAndLayoutLifecycle
 import javax.inject.Inject
 
+/**
+ * Time presenter.
+ */
 class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle<TimerView>() {
     override var viewLifecycleObserver: LifecycleObserver = ViewLifecycleObserver()
     override var viewLayoutLifecycleObserver: LifecycleObserver = ViewLayoutLifecycleObserver()
@@ -15,11 +18,13 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onCreate() {
             view.registerTimeReceiver()
+            view.bindService()
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun onDestroy() {
             view.unregisterTimeReceiver()
+            view.unbindService()
         }
     }
 
