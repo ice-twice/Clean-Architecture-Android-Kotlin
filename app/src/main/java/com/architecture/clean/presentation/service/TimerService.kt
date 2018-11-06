@@ -19,7 +19,6 @@ class TimerService : IntentService("TimerService"), TimerServiceView {
     lateinit var timerServicePresenter: TimerServicePresenter
     override var isStarted = false
 
-
     private val timerServiceBinder by lazy(mode = LazyThreadSafetyMode.NONE) {
         TimerServiceBinder()
     }
@@ -30,11 +29,9 @@ class TimerService : IntentService("TimerService"), TimerServiceView {
         timerServicePresenter.initialize(this)
     }
 
-
     override fun onHandleIntent(intent: Intent?) {
         timerServicePresenter.onHandleIntent()
     }
-
 
     override fun sendBroadcast(seconds: Int) {
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(Intent(SECONDS_COUNT_ACTION).putExtra(EXTRA_SECONDS_COUNT, seconds))

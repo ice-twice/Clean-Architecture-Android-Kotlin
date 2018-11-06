@@ -19,7 +19,17 @@ import javax.inject.Inject
 class TimerFragment : BaseFragment(), TimerView {
     override fun layoutId(): Int = R.layout.fragment_timer
 
-    private lateinit var timerServiceConnection: ServiceConnection
+    private val timerServiceConnection: ServiceConnection by lazy(mode = LazyThreadSafetyMode.NONE) {
+        object : ServiceConnection {
+
+            override fun onServiceConnected(className: ComponentName, timerServiceBinder: IBinder) {
+                timerPresenter.onServiceConnected((timerServiceBinder as TimerService.TimerServiceBinder).getTimerService())
+            }
+
+            override fun onServiceDisconnected(arg0: ComponentName) {
+            }
+        }
+    }
 
     @Inject
     lateinit var timerPresenter: TimerPresenter
@@ -78,15 +88,6 @@ class TimerFragment : BaseFragment(), TimerView {
      * Bind to the service to get the service instance to know if the service was started/
      */
     override fun bindService() {
-        timerServiceConnection = object : ServiceConnection {
-
-            override fun onServiceConnected(className: ComponentName, timerServiceBinder: IBinder) {
-                timerPresenter.onServiceConnected((timerServiceBinder as TimerService.TimerServiceBinder).getTimerService())
-            }
-
-            override fun onServiceDisconnected(arg0: ComponentName) {
-            }
-        }
         context?.bindService(Intent(context, TimerService::class.java), timerServiceConnection, Context.BIND_AUTO_CREATE)
     }
 
