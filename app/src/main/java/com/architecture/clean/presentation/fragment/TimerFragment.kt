@@ -85,7 +85,6 @@ class TimerFragment : BaseFragment(), TimerView {
             }
 
             override fun onServiceDisconnected(arg0: ComponentName) {
-                timerPresenter.onServiceDisconnected()
             }
         }
         context?.bindService(Intent(context, TimerService::class.java), timerServiceConnection, Context.BIND_AUTO_CREATE)

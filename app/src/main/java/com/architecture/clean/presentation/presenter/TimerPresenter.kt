@@ -36,9 +36,7 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun onDestroy() {
-            if (isBoundToService) {
-                view.unbindService()
-            }
+            unbindService()
         }
     }
 
@@ -54,9 +52,7 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
         view.enableStartServiceButton()
         view.disableStopServiceButton()
         view.setServiceStoppedText()
-        if (isBoundToService) {
-            view.unbindService()
-        }
+        unbindService()
     }
 
     fun onUpdateTime(remainSeconds: Int?) {
@@ -78,8 +74,11 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
         }
     }
 
-    fun onServiceDisconnected() {
-        isBoundToService = false
+    private fun unbindService() {
+        if (isBoundToService) {
+            view.unbindService()
+            isBoundToService = false
+        }
 
     }
 }
