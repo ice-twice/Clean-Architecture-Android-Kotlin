@@ -56,12 +56,14 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
     }
 
     fun onUpdateTime(remainSeconds: Int?) {
+        // todo it can be improved with using Live Data.
         if (remainSeconds != null) {
             view.showTime(remainSeconds)
         }
     }
 
     fun onServiceConnected(timerServiceView: TimerServiceView) {
+        // todo it can be improved with using Live Data.
         isBoundToService = true
         if (timerServiceView.isStarted) {
             view.disableStartServiceButton()
