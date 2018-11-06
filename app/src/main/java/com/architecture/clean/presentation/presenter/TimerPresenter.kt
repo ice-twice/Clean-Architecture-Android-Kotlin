@@ -63,7 +63,7 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
 
     fun onServiceConnected(timerServiceView: TimerServiceView) {
         isBoundToService = true
-        if (timerServiceView.isServiceStarted()) {
+        if (timerServiceView.isStarted) {
             view.disableStartServiceButton()
             view.enableStopServiceButton()
             view.setLoadingText()
@@ -79,6 +79,5 @@ class TimerPresenter @Inject constructor() : BasePresenterViewAndLayoutLifecycle
             view.unbindService()
             isBoundToService = false
         }
-
     }
 }

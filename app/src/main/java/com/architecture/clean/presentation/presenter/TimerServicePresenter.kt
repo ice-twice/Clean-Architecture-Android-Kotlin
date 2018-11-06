@@ -12,12 +12,12 @@ class TimerServicePresenter @Inject constructor() : BasePresenter<TimerServiceVi
     private val seconds = 20
 
     fun onHandleIntent() {
-        view.setServiceIsStarted()
+        view.isStarted = true
         var remainSeconds = seconds
         while (remainSeconds > 0) {
             TimeUnit.SECONDS.sleep(1L)
             remainSeconds--
-            if (!view.isServiceStarted()) break
+            if (!view.isStarted) break
             view.sendBroadcast(remainSeconds)
         }
     }

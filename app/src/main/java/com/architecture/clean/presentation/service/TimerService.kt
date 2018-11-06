@@ -17,6 +17,7 @@ import javax.inject.Inject
 class TimerService : IntentService("TimerService"), TimerServiceView {
     @Inject
     lateinit var timerServicePresenter: TimerServicePresenter
+    override var isStarted = false
 
 
     private val timerServiceBinder by lazy(mode = LazyThreadSafetyMode.NONE) {
@@ -34,11 +35,6 @@ class TimerService : IntentService("TimerService"), TimerServiceView {
         timerServicePresenter.onHandleIntent()
     }
 
-    override fun setServiceIsStarted() {
-        isStarted = true
-    }
-
-    override fun isServiceStarted(): Boolean = isStarted
 
     override fun sendBroadcast(seconds: Int) {
         LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(Intent(SECONDS_COUNT_ACTION).putExtra(EXTRA_SECONDS_COUNT, seconds))
@@ -47,9 +43,6 @@ class TimerService : IntentService("TimerService"), TimerServiceView {
     companion object {
         const val SECONDS_COUNT_ACTION = "com.architecture.clean.presentation.service.TimerService.SECONDS_COUNT_ACTION"
         const val EXTRA_SECONDS_COUNT = "com.architecture.clean.presentation.service.TimerService.EXTRA_SECONDS_COUNT"
-
-        // it's better to bind to the service to get the status
-        var isStarted = false
     }
 
     override fun onDestroy() {
