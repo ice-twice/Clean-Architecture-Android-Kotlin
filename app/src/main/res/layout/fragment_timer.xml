@@ -43,7 +43,7 @@
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/this_is_an_example_of_using_the_timer_service_and_the_timer_broadcast_receiver_the_service_runs_for_20_seconds_every_second_it_sends_a_broadcast_and_stops_at_the_end"
+        android:text="@string/this_is_an_example_of_using_the_timer_service_and_the_timer_broadcast_receiver_the_service_runs_for_20_seconds_every_second_it_sends_a_broadcast_and_stops_at_the_end_the_service_can_run_in_background_without_any_bound_user_interface_components"
         android:textColor="@color/screen_hint_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
