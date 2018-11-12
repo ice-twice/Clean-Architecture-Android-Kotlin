@@ -20,8 +20,9 @@
             android:paddingEnd="@dimen/dp4"
             android:paddingBottom="@dimen/dp4">
 
-            <androidx.cardview.widget.CardView style="@style/TopicCard"
-                android:id="@+id/clean_architecture">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/clean_architecture"
+                style="@style/TopicCard">
 
                 <ImageView
                     style="@style/TopicCardImage"
@@ -33,7 +34,9 @@
                     android:text="@string/what_is_clean_architecture" />
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView style="@style/TopicCard">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/clean_architecture_advantages"
+                style="@style/TopicCard">
 
                 <ImageView
                     style="@style/TopicCardImage"

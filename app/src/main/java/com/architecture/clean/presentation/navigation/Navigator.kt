@@ -2,6 +2,7 @@ package com.architecture.clean.presentation.navigation
 
 import android.content.Context
 import android.content.Intent
+import com.architecture.clean.presentation.activity.InternetStatusActivity
 import com.architecture.clean.presentation.activity.TimerActivity
 import com.architecture.clean.presentation.activity.TopicListActivity
 
@@ -16,7 +17,17 @@ class Navigator {
         context?.startActivity(Intent(context, TopicListActivity::class.java))
     }
 
+    /**
+     * Show the clean architecture view.
+     */
     fun showCleanArchitectureView(context: Context?) {
         context?.startActivity(Intent(context, TimerActivity::class.java))
+    }
+
+    /**
+     * Show the clean architecture advantages view.
+     */
+    fun showCleanArchitectureAdvantagesView(context: Context?) {
+        context?.startActivity(Intent(context, InternetStatusActivity::class.java))
     }
 }
