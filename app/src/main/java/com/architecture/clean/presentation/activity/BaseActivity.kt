@@ -10,12 +10,12 @@ import kotlinx.android.synthetic.main.toolbar.*
  * Abstract activity.
  */
 abstract class BaseActivity : AppCompatActivity() {
-    abstract fun needSetContentView(): Boolean
-    abstract fun layoutId(): Int
+    open fun needSetContentView(): Boolean = false
+    open fun layoutId(): Int = 0
     abstract fun fragmentContainerId(): Int
     abstract fun fragment(): Fragment
-    abstract fun initializeToolbar(): Boolean
-    abstract fun toolbarTitle(): String
+    open fun initializeToolbar(): Boolean = false
+    open fun toolbarTitle(): String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
