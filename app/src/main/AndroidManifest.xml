@@ -26,6 +26,7 @@
         </activity>
         <activity android:name=".presentation.activity.TopicListActivity" />
         <activity android:name=".presentation.activity.TimerActivity" />
+        <activity android:name=".presentation.activity.InternetStatusActivity" />
 
         <service android:name=".presentation.service.TimerService" />
     </application>

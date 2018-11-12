@@ -19,4 +19,5 @@
     <string name="loading">Loading…</string>
     <string name="service_stopped">Service stopped</string>
     <string name="this_is_an_example_of_using_the_timer_service_and_the_timer_broadcast_receiver_the_service_runs_for_20_seconds_every_second_it_sends_a_broadcast_and_stops_at_the_end_the_service_can_run_in_background_without_any_bound_user_interface_components">This is an example of using the Timer Service and the Timer Broadcast Receiver. The service runs for 20 seconds, every second it sends a broadcast and stops at the end. The service can run in background without any bound user interface components.</string>
+    <string name="internet_status">Internet status</string>
 </resources>
