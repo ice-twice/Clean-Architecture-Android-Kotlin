@@ -32,7 +32,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@android:color/holo_orange_light"
-        android:padding="@dimen/dp8"
+        android:paddingStart="@dimen/dp8"
+        android:paddingTop="@dimen/dp8"
+        android:paddingEnd="50dp"
+        android:paddingBottom="@dimen/dp8"
         android:text="@string/this_is_an_example_of_using_the_coordinator_layout_this_tip_and_the_floating_button_can_change_own_position_according_to_the_scroll"
         app:layout_behavior="com.architecture.clean.presentation.component.coordinatorbehavior.TextViewDescriptionBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
