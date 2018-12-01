@@ -14,16 +14,12 @@ import com.architecture.clean.presentation.di.ModuleProvider
 abstract class BaseFragment : Fragment() {
     abstract fun layoutId(): Int
 
-    fun getModuleProvider(): ModuleProvider {
-        return (activity?.application as AndroidApplication).moduleProvider
-    }
+    fun getModuleProvider(): ModuleProvider = (activity?.application as AndroidApplication).moduleProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layoutId(), container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(layoutId(), container, false)
 }
