@@ -1,4 +1,4 @@
-package com.architecture.clean.presentation.component.view
+package com.architecture.clean.presentation.component.coordinatorbehavior
 
 import android.content.Context
 import android.util.AttributeSet
