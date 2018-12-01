@@ -57,11 +57,11 @@
                     android:id="@+id/login_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="no"
                     android:hint="@string/login"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:autofillHints="no" />
+                    android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,13 +78,13 @@
                     android:id="@+id/password_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="no"
                     android:hint="@string/password"
                     android:imeActionLabel="@string/sign_in"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:autofillHints="no" />
+                    android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

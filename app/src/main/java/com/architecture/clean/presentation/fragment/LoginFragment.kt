@@ -25,7 +25,7 @@ class LoginFragment : BaseFragment(), LoginView {
     @Inject
     lateinit var navigator: Navigator
 
-    override fun layoutId() : Int = R.layout.fragment_login
+    override fun layoutId(): Int = R.layout.fragment_login
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class LoginFragment : BaseFragment(), LoginView {
         super.onViewCreated(view, savedInstanceState)
         // observe fragment lifecycle and layout lifecycle
         // the first method where it is safe to access the view lifecycle is onCreateView()
-        loginPresenter.initialize(this, this,viewLifecycleOwner )
+        loginPresenter.initialize(this, this, viewLifecycleOwner)
 
         password_field.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
