@@ -3,8 +3,10 @@ package com.architecture.clean.presentation.component.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
+import androidx.core.widget.NestedScrollView
 import com.architecture.clean.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -13,11 +15,15 @@ class FloatingActionButtonBehavior(context: Context?, attrs: AttributeSet?) : Co
     override fun onNestedScroll(coordinatorLayout: CoordinatorLayout, child: FloatingActionButton, target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
 
-        if (dyConsumed > 0) {
-            (child as View).visibility = View.INVISIBLE
-        } else {
-            child.show()
-        }
+        val parentHeight = coordinatorLayout.height
+        val scrollY = (target as NestedScrollView).scrollY
+        val scrollChildHeight = if (target.childCount > 0) target.getChildAt(0).height else 0
+        val scrollYPosition = scrollY + parentHeight * (scrollY.toFloat() / (scrollChildHeight - parentHeight))
+        val scrollPassedWay = scrollYPosition / scrollChildHeight
+        val buttonLayoutParams = child.layoutParams as ViewGroup.MarginLayoutParams
+        val rightDistanceForButton = parentHeight - buttonLayoutParams.topMargin - buttonLayoutParams.bottomMargin - child.height
+        val buttonTop = rightDistanceForButton - rightDistanceForButton * scrollPassedWay + buttonLayoutParams.topMargin
+        child.y = buttonTop
     }
 
     override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout, child: FloatingActionButton, directTargetChild: View, target: View, axes: Int, type: Int): Boolean {
