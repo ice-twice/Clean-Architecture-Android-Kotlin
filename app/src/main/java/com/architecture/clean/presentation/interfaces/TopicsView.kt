@@ -13,4 +13,9 @@ interface TopicsView {
      * Show the clean architecture advantages view.
      */
     fun showCleanArchitectureAdvantagesView()
+
+    /**
+     * Show the news list view.
+     */
+    fun showNewsListView()
 }

@@ -3,6 +3,7 @@ package com.architecture.clean.presentation.navigation
 import android.content.Context
 import android.content.Intent
 import com.architecture.clean.presentation.activity.InternetStatusActivity
+import com.architecture.clean.presentation.activity.NewsListActivity
 import com.architecture.clean.presentation.activity.TimerActivity
 import com.architecture.clean.presentation.activity.TopicListActivity
 
@@ -29,5 +30,12 @@ class Navigator {
      */
     fun showCleanArchitectureAdvantagesView(context: Context?) {
         context?.startActivity(Intent(context, InternetStatusActivity::class.java))
+    }
+
+    /**
+     * Show the news list activity.
+     */
+    fun showNewsListView(context: Context?) {
+        context?.startActivity(Intent(context, NewsListActivity::class.java))
     }
 }

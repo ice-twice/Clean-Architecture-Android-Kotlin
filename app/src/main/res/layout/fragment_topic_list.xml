@@ -48,6 +48,19 @@
                     android:text="@string/advantages_of_clean_architecture" />
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView style="@style/TopicCard"
+                android:id="@+id/news_list">
+
+                <ImageView
+                    style="@style/TopicCardImage"
+                    android:contentDescription="@string/topic_image"
+                    android:src="@drawable/topic_logo4" />
+
+                <TextView
+                    style="@style/TopicCardText"
+                    android:text="@string/an_example_of_saving_ui_states_of_a_multi_pane_window" />
+            </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView style="@style/TopicCard">
 
                 <ImageView
@@ -58,18 +71,6 @@
                 <TextView
                     style="@style/TopicCardText"
                     android:text="@string/about_author" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView style="@style/TopicCard">
-
-                <ImageView
-                    style="@style/TopicCardImage"
-                    android:contentDescription="@string/topic_image"
-                    android:src="@drawable/topic_logo4" />
-
-                <TextView
-                    style="@style/TopicCardText"
-                    android:text="@string/an_example_of_saving_ui_states_of_a_multi_pane_window" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>

@@ -41,6 +41,10 @@ class TopicListFragment : BaseFragment(), TopicsView {
         clean_architecture_advantages.setOnClickListener {
             topicsPresenter.onClickCleanArchitectureAdvantages()
         }
+
+        news_list.setOnClickListener {
+            topicsPresenter.onClickNewsList()
+        }
     }
 
     override fun showCleanArchitectureView() {
@@ -49,6 +53,9 @@ class TopicListFragment : BaseFragment(), TopicsView {
 
     override fun showCleanArchitectureAdvantagesView() {
         navigator.showCleanArchitectureAdvantagesView(context)
+    }
 
+    override fun showNewsListView() {
+        navigator.showNewsListView(context)
     }
 }

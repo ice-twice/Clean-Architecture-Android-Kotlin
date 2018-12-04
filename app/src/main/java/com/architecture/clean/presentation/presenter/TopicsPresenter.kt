@@ -21,4 +21,11 @@ class TopicsPresenter @Inject constructor() : BasePresenter<TopicsView>() {
     fun onClickCleanArchitectureAdvantages() {
         view.showCleanArchitectureAdvantagesView()
     }
+
+    /**
+     * Show the news list view.
+     */
+    fun onClickNewsList() {
+        view.showNewsListView()
+    }
 }
