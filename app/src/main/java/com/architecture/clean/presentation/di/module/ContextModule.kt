@@ -6,10 +6,9 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class ContextModule {
-    lateinit var context: Context
+class ContextModule : AbstractModule<Context>() {
 
     @Provides
     @Singleton
-    fun provideContext(): Context = context
+    fun provideContext(): Context = instance!!
 }

@@ -9,7 +9,7 @@ import com.squareup.leakcanary.LeakCanary
 class AndroidApplication : Application() {
     val moduleProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
         val moduleProvider = ModuleProvider()
-        moduleProvider.contextModule.context = this
+        moduleProvider.contextModule.instance = this
         return@lazy moduleProvider
     }
 
