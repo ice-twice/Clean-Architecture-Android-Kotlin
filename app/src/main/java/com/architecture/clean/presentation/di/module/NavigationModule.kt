@@ -7,7 +7,7 @@ import java.lang.ref.SoftReference
 import javax.inject.Singleton
 
 @Module
-class NavigationModule : AbstractModule() {
+class NavigationModule : AbstractModuleSoftReference<Navigator>() {
     private var navigator: SoftReference<Navigator>? = null
 
     @Provides

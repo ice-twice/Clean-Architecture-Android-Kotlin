@@ -10,7 +10,7 @@ import java.lang.ref.SoftReference
 import javax.inject.Singleton
 
 @Module
-class AuthenticationRepositoryModule : AbstractModule() {
+class AuthenticationRepositoryModule : AbstractModuleSoftReference<AuthenticationRepository>() {
     private var authenticationRepository: SoftReference<AuthenticationRepository>? = null
 
 
