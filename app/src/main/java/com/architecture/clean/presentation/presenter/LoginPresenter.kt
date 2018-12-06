@@ -7,6 +7,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.architecture.clean.domain.exception.InternetConnectionIsNotAvailableException
 import com.architecture.clean.domain.exception.WrongLoginOrPasswordException
 import com.architecture.clean.domain.interactor.LoginInteractor
+import com.architecture.clean.domain.interactor.abstractinteractor.adapter.observer.ObserverAdapter
 import com.architecture.clean.presentation.component.StoppableLiveData
 import com.architecture.clean.presentation.interfaces.LoginView
 import com.architecture.clean.presentation.presenter.base.BasePresenterViewAndLayoutLifecycle
@@ -80,7 +81,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
         view.hideKeyboard()
         loginLoadingLiveEvent.value(true)
         loginFailureLiveEvent.stopped = true
-        loginInteractor.execute(LoginInteractor.LoginParam(login, password), object : DisposableCompletableObserver() {
+        loginInteractor.execute(LoginInteractor.LoginParam(login, password), ObserverAdapter(object : DisposableCompletableObserver() {
             override fun onComplete() {
                 loginSuccessLiveEvent.value(null).stopped = true
                 loginLoadingLiveEvent.value(false).stopped = true
@@ -90,6 +91,6 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
                 loginLoadingLiveEvent.value(false).stopped = true
                 loginFailureLiveEvent.value(e)
             }
-        })
+        }))
     }
 }
