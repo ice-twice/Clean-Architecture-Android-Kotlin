@@ -6,6 +6,10 @@ import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableCompletableObserver
 
+/**
+ * The completable adapter.
+ */
+
 class StreamAdapterCompletable(private val completable: Completable) : BaseStreamAdapter<DisposableCompletableObserver>() {
 
     override fun subscribeOn(scheduler: Scheduler): BaseStreamAdapter<DisposableCompletableObserver> {

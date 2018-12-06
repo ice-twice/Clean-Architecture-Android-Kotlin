@@ -6,7 +6,9 @@ import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 
-
+/**
+ * The single adapter.
+ */
 class StreamAdapterSingle<T>(private val single: Single<T>) : BaseStreamAdapter<DisposableSingleObserver<T>>() {
     override fun subscribeOn(scheduler: Scheduler): BaseStreamAdapter<DisposableSingleObserver<T>> {
         return StreamAdapterSingle(single.subscribeOn(scheduler))
