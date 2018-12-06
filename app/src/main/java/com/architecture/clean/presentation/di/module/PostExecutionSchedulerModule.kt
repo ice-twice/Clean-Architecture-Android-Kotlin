@@ -1,28 +1,25 @@
 package com.architecture.clean.presentation.di.module
 
-import com.architecture.clean.domain.scheduler.BackgroundScheduler
 import com.architecture.clean.domain.scheduler.PostExecutionScheduler
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import java.lang.ref.SoftReference
 import javax.inject.Singleton
 
 /**
- * The background schedulers.
+ * The post execution scheduler.
  */
 @Module
-class BackgroundSchedulerModule : AbstractModuleSoftReference<BackgroundScheduler>() {
+class PostExecutionSchedulerModule : AbstractModuleSoftReference<PostExecutionScheduler>() {
 
     @Provides
     @Singleton
-    internal fun provideBackgroundScheduler(): BackgroundScheduler {
+    internal fun providePostExecutionScheduler(): PostExecutionScheduler {
         return getInstance {
-            object : BackgroundScheduler {
+            object : PostExecutionScheduler {
                 override val scheduler: Scheduler
-                    get() = Schedulers.computation()
+                    get() = AndroidSchedulers.mainThread()
             }
         }
     }

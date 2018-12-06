@@ -6,8 +6,12 @@ import com.architecture.clean.presentation.di.module.*
  * This class is used to provide modules.
  */
 class ModuleProvider {
-    val schedulerModule by lazy(mode = LazyThreadSafetyMode.NONE) {
+    val backgroundSchedulerModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         BackgroundSchedulerModule()
+    }
+
+    val postExecutionSchedulerModule by lazy(mode = LazyThreadSafetyMode.NONE) {
+        PostExecutionSchedulerModule()
     }
 
     val androidUtilModule by lazy(mode = LazyThreadSafetyMode.NONE) {

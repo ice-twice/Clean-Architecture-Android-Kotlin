@@ -20,7 +20,8 @@ class NewsListFragment : BaseFragment(), NewsListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DaggerNewsListComponent.builder()
-                .schedulerModule(getModuleProvider().schedulerModule)
+                .backgroundSchedulerModule(getModuleProvider().backgroundSchedulerModule)
+                .postExecutionSchedulerModule(getModuleProvider().postExecutionSchedulerModule)
                 .newsRepositoryModule(getModuleProvider().newsRepositoryModule)
                 .build()
                 .inject(this)

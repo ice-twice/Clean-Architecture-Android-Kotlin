@@ -30,7 +30,8 @@ class LoginFragment : BaseFragment(), LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DaggerLoginComponent.builder()
-                .schedulerModule(getModuleProvider().schedulerModule)
+                .backgroundSchedulerModule(getModuleProvider().backgroundSchedulerModule)
+                .postExecutionSchedulerModule(getModuleProvider().postExecutionSchedulerModule)
                 .androidUtilModule(getModuleProvider().androidUtilModule)
                 .navigationModule(getModuleProvider().navigatorModule)
                 .contextModule(getModuleProvider().contextModule)

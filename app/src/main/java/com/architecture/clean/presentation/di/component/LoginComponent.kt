@@ -9,7 +9,7 @@ import javax.inject.Singleton
  * Login component.
  */
 @Singleton
-@Component(modules = [BackgroundSchedulerModule::class, AndroidUtilModule::class, NavigationModule::class, ContextModule::class, AuthenticationRepositoryModule::class])
+@Component(modules = [BackgroundSchedulerModule::class, PostExecutionSchedulerModule::class, AndroidUtilModule::class, NavigationModule::class, ContextModule::class, AuthenticationRepositoryModule::class])
 interface LoginComponent {
     fun inject(fragment: LoginFragment)
 }
