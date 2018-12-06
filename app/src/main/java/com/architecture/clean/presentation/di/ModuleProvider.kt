@@ -7,7 +7,7 @@ import com.architecture.clean.presentation.di.module.*
  */
 class ModuleProvider {
     val schedulerModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        SchedulerModule()
+        BackgroundSchedulerModule()
     }
 
     val androidUtilModule by lazy(mode = LazyThreadSafetyMode.NONE) {

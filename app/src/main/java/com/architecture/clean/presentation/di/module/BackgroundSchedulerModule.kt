@@ -14,7 +14,7 @@ import javax.inject.Singleton
  * The module is uses to provide schedulers.
  */
 @Module
-class SchedulerModule : AbstractModuleSoftReference<BackgroundScheduler>() {
+class BackgroundSchedulerModule : AbstractModuleSoftReference<BackgroundScheduler>() {
     private var postExecutionScheduler: SoftReference<PostExecutionScheduler>? = null
 
     @Provides

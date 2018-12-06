@@ -7,17 +7,17 @@ import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
 
-class SchedulerModuleTest {
-    private lateinit var schedulerModule: SchedulerModule
+class BackgroundSchedulerModuleTest {
+    private lateinit var backgroundSchedulerModule: BackgroundSchedulerModule
     @Before
     internal fun setUp() {
-        schedulerModule = SchedulerModule()
+        backgroundSchedulerModule = BackgroundSchedulerModule()
     }
 
     @Test
     internal fun testProvideBackgroundScheduler() {
-        var backgroundScheduler1: BackgroundScheduler? = schedulerModule.provideBackgroundScheduler()
-        var backgroundScheduler2: BackgroundScheduler? = schedulerModule.provideBackgroundScheduler()
+        var backgroundScheduler1: BackgroundScheduler? = backgroundSchedulerModule.provideBackgroundScheduler()
+        var backgroundScheduler2: BackgroundScheduler? = backgroundSchedulerModule.provideBackgroundScheduler()
         assertEquals(backgroundScheduler1, backgroundScheduler2)
         val backgroundScheduler1ToString = backgroundScheduler1.toString()
         backgroundScheduler1 = null
@@ -30,15 +30,15 @@ class SchedulerModuleTest {
             // Ignore
         }
 
-        val backgroundScheduler3 = schedulerModule.provideBackgroundScheduler()
+        val backgroundScheduler3 = backgroundSchedulerModule.provideBackgroundScheduler()
         val backgroundScheduler3ToString = backgroundScheduler3.toString()
         assertNotEquals(backgroundScheduler1ToString, backgroundScheduler3ToString)
     }
 
     @Test
     internal fun testProvidePostExecutionScheduler() {
-        var postExecutionScheduler1: PostExecutionScheduler? = schedulerModule.providePostExecutionScheduler()
-        var postExecutionScheduler2: PostExecutionScheduler? = schedulerModule.providePostExecutionScheduler()
+        var postExecutionScheduler1: PostExecutionScheduler? = backgroundSchedulerModule.providePostExecutionScheduler()
+        var postExecutionScheduler2: PostExecutionScheduler? = backgroundSchedulerModule.providePostExecutionScheduler()
         assertEquals(postExecutionScheduler1, postExecutionScheduler2)
         val postExecutionScheduler1ToString = postExecutionScheduler1.toString()
         postExecutionScheduler1 = null
@@ -51,14 +51,14 @@ class SchedulerModuleTest {
             // Ignore
         }
 
-        val postExecutionScheduler3 = schedulerModule.providePostExecutionScheduler()
+        val postExecutionScheduler3 = backgroundSchedulerModule.providePostExecutionScheduler()
         val postExecutionScheduler3ToString = postExecutionScheduler3.toString()
         assertNotEquals(postExecutionScheduler1ToString, postExecutionScheduler3ToString)
     }
 
     @Test
     fun testIfInstancesAreDifferent() {
-        assertNotEquals(SchedulerModule().provideBackgroundScheduler(), SchedulerModule().provideBackgroundScheduler())
-        assertNotEquals(SchedulerModule().providePostExecutionScheduler(), SchedulerModule().providePostExecutionScheduler())
+        assertNotEquals(BackgroundSchedulerModule().provideBackgroundScheduler(), BackgroundSchedulerModule().provideBackgroundScheduler())
+        assertNotEquals(BackgroundSchedulerModule().providePostExecutionScheduler(), BackgroundSchedulerModule().providePostExecutionScheduler())
     }
 }
