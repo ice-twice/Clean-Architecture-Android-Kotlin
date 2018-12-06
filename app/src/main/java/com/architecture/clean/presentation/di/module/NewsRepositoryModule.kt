@@ -7,7 +7,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class NewsRepositoryModule : AbstractModuleSoftReference<NewsRepository>() {
+class NewsRepositoryModule : AbstractModuleReferenceSoft<NewsRepository>() {
 
     @Provides
     @Singleton

@@ -9,7 +9,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AuthenticationRepositoryModule : AbstractModuleSoftReference<AuthenticationRepository>() {
+class AuthenticationRepositoryModule : AbstractModuleReferenceSoft<AuthenticationRepository>() {
 
     @Provides
     @Singleton

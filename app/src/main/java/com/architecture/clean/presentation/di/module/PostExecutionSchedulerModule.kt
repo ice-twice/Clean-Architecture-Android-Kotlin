@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * The post execution scheduler.
  */
 @Module
-class PostExecutionSchedulerModule : AbstractModuleSoftReference<PostExecutionScheduler>() {
+class PostExecutionSchedulerModule : AbstractModuleReferenceSoft<PostExecutionScheduler>() {
 
     @Provides
     @Singleton

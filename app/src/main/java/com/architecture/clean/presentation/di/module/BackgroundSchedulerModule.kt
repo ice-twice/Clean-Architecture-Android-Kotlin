@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * The background schedulers.
  */
 @Module
-class BackgroundSchedulerModule : AbstractModuleSoftReference<BackgroundScheduler>() {
+class BackgroundSchedulerModule : AbstractModuleReferenceSoft<BackgroundScheduler>() {
 
     @Provides
     @Singleton

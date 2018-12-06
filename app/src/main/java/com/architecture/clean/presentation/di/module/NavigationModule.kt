@@ -6,7 +6,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class NavigationModule : AbstractModuleSoftReference<Navigator>() {
+class NavigationModule : AbstractModuleReferenceSoft<Navigator>() {
 
     @Provides
     @Singleton
