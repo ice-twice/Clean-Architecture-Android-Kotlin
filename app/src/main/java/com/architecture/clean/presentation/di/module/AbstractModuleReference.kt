@@ -7,7 +7,7 @@ import java.lang.ref.Reference
  *
  * All modules should wrap their held objects with SoftReference.
  */
-abstract class AbstractModule<T, K : Reference<T>> {
+abstract class AbstractModuleReference<T, K : Reference<T>> {
     private var reference: K? = null
 
     fun getInstance(createInstance: () -> T): T {
