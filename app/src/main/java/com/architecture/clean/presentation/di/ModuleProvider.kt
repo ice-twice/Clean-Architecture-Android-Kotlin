@@ -25,4 +25,8 @@ class ModuleProvider {
     val authenticationRepositoryModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         AuthenticationRepositoryModule()
     }
+
+    val newsRepositoryModule by lazy(mode = LazyThreadSafetyMode.NONE) {
+        NewsRepositoryModule()
+    }
 }

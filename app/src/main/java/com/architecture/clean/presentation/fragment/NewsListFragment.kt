@@ -17,11 +17,12 @@ class NewsListFragment : BaseFragment(), NewsListView {
     @Inject
     lateinit var newsListPresenter: NewsListPresenter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerNewsListComponent
-                .create()
+        DaggerNewsListComponent.builder()
+                .schedulerModule(getModuleProvider().schedulerModule)
+                .newsRepositoryModule(getModuleProvider().newsRepositoryModule)
+                .build()
                 .inject(this)
     }
 
