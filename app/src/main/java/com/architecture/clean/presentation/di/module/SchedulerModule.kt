@@ -15,20 +15,17 @@ import javax.inject.Singleton
  */
 @Module
 class SchedulerModule : AbstractModuleSoftReference<BackgroundScheduler>() {
-    private var backgroundScheduler: SoftReference<BackgroundScheduler>? = null
     private var postExecutionScheduler: SoftReference<PostExecutionScheduler>? = null
 
     @Provides
     @Singleton
     internal fun provideBackgroundScheduler(): BackgroundScheduler {
-        val pair = getOrCreateInstance(backgroundScheduler, {
+        return getInstance {
             object : BackgroundScheduler {
                 override val scheduler: Scheduler
                     get() = Schedulers.computation()
             }
-        }, { instance -> SoftReference(instance) })
-        backgroundScheduler = pair.second
-        return pair.first
+        }
     }
 
     @Provides
