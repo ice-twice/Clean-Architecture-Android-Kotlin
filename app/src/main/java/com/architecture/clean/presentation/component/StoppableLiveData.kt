@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
  * The live data wrapper which can be stopped and then started again.
  */
 class StoppableLiveData<T> : MutableLiveData<T>() {
-    var stopped = false
+    private var stopped = false
 
     fun value(value: T?): StoppableLiveData<T> {
         this.stopped = false
@@ -22,5 +22,13 @@ class StoppableLiveData<T> : MutableLiveData<T>() {
                 observer.onChanged(it)
             }
         })
+    }
+
+    /**
+     * Stop delivering a value after subscription if the live data is stopped.
+     */
+    fun stop(): StoppableLiveData<T> {
+        stopped = true
+        return this
     }
 }

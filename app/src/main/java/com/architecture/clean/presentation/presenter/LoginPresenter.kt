@@ -82,15 +82,15 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
     internal fun clickLoginButton(login: String, password: String) {
         view.hideKeyboard()
         loginLoadingLiveEvent.value(true)
-        loginFailureLiveEvent.stopped = true
+        loginFailureLiveEvent.stop()
         loginInteractor.execute(LoginInteractor.LoginParam(login, password), ObserverAdapter(object : DisposableCompletableObserver() {
             override fun onComplete() {
-                loginSuccessLiveEvent.value(null).stopped = true
-                loginLoadingLiveEvent.value(false).stopped = true
+                loginSuccessLiveEvent.value(null).stop()
+                loginLoadingLiveEvent.value(false).stop()
             }
 
             override fun onError(e: Throwable) {
-                loginLoadingLiveEvent.value(false).stopped = true
+                loginLoadingLiveEvent.value(false).stop()
                 loginFailureLiveEvent.value(e)
             }
         }))
