@@ -23,6 +23,18 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
     override var viewLifecycleObserver: LifecycleObserver = ViewLifecycleObserver()
     override var viewLayoutLifecycleObserver: LifecycleObserver = ViewLayoutLifecycleObserver()
 
+    private val loginLoadingLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        StoppableLiveData<Boolean>()
+    }
+
+    private val loginSuccessLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        StoppableLiveData<Void>()
+    }
+
+    private val loginFailureLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
+        StoppableLiveData<Throwable>()
+    }
+
     /**
      * This class is used to handle the view lifecycle.
      */
@@ -62,17 +74,7 @@ class LoginPresenter @Inject constructor(private val loginInteractor: LoginInter
         }
     }
 
-    private val loginLoadingLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        StoppableLiveData<Boolean>()
-    }
 
-    private val loginSuccessLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        StoppableLiveData<Void>()
-    }
-
-    private val loginFailureLiveEvent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        StoppableLiveData<Throwable>()
-    }
 
     /**
      * Handle a click oт the login button.
