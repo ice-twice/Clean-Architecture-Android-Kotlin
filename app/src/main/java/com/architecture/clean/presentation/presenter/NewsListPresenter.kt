@@ -2,10 +2,12 @@ package com.architecture.clean.presentation.presenter
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import com.architecture.clean.domain.News
 import com.architecture.clean.domain.interactor.NewsInteractor
 import com.architecture.clean.domain.interactor.abstractinteractor.adapter.observer.ObserverAdapter
+import com.architecture.clean.presentation.component.StoppableLiveData
 import com.architecture.clean.presentation.interfaces.NewsListView
 import com.architecture.clean.presentation.presenter.base.BasePresenterViewAndLayoutLifecycle
 import io.reactivex.observers.DisposableSingleObserver
@@ -18,13 +20,16 @@ class NewsListPresenter @Inject constructor(private val newsInteractor: NewsInte
     override var viewLayoutLifecycleObserver: LifecycleObserver = ViewLayoutLifecycleObserver()
     override var viewLifecycleObserver: LifecycleObserver = ViewLifecycleObserver()
 
-    protected inner class ViewLifecycleObserver : LifecycleObserver {
+    private val newsList by lazy(mode = LazyThreadSafetyMode.NONE) {
+        StoppableLiveData<List<News>>()
+    }
 
+    protected inner class ViewLifecycleObserver : LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onCreate() {
             newsInteractor.execute(Unit, ObserverAdapter(object : DisposableSingleObserver<List<News>>() {
                 override fun onSuccess(t: List<News>) {
-
+                    newsList.value(t)
                 }
 
                 override fun onError(e: Throwable) {
@@ -39,5 +44,12 @@ class NewsListPresenter @Inject constructor(private val newsInteractor: NewsInte
         }
     }
 
-    protected inner class ViewLayoutLifecycleObserver : LifecycleObserver
+    protected inner class ViewLayoutLifecycleObserver : LifecycleObserver {
+        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+        fun onCreate() {
+            newsList.observe(viewLayoutLifecycleOwner, Observer {
+                view.showNews()
+            })
+        }
+    }
 }
