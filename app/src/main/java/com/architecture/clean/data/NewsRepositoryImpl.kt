@@ -17,7 +17,12 @@ class NewsRepositoryImpl @Inject constructor() : NewsRepository {
             } catch (e: InterruptedException) {
                 // empty
             }
-            emitter.onSuccess(listOf(News("title", "body")))
+
+            val list = arrayListOf<News>()
+            for (i in 1..100) {
+                list.add(News("title$i", "body$i"))
+            }
+            emitter.onSuccess(list)
         }
     }
 }
