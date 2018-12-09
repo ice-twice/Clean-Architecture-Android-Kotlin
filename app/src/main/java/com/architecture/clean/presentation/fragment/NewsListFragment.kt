@@ -2,12 +2,13 @@ package com.architecture.clean.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.architecture.clean.R
 import com.architecture.clean.domain.News
+import com.architecture.clean.presentation.adapter.NewsRecyclerViewAdapter
 import com.architecture.clean.presentation.di.component.DaggerNewsListComponent
 import com.architecture.clean.presentation.interfaces.NewsListView
 import com.architecture.clean.presentation.presenter.NewsListPresenter
-import com.architecture.clean.presentation.adapter.NewsRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
@@ -38,6 +39,10 @@ class NewsListFragment : BaseFragment(), NewsListView {
     override fun showNews(newsList: List<News>) {
         progress.visibility = View.GONE
         news_list.visibility = View.VISIBLE
-        news_list.adapter = NewsRecyclerViewAdapter(newsList)
+        news_list.adapter = NewsRecyclerViewAdapter(newsList, object : NewsRecyclerViewAdapter.OnClickNewsListener {
+            override fun onClickNews(news: News) {
+                Toast.makeText(context, news.title, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
