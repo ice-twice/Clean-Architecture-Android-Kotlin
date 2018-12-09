@@ -7,6 +7,8 @@ import com.architecture.clean.domain.News
 import com.architecture.clean.presentation.di.component.DaggerNewsListComponent
 import com.architecture.clean.presentation.interfaces.NewsListView
 import com.architecture.clean.presentation.presenter.NewsListPresenter
+import com.architecture.clean.presentation.presenter.NewsRecyclerViewAdapter
+import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
 /**
@@ -34,6 +36,8 @@ class NewsListFragment : BaseFragment(), NewsListView {
     }
 
     override fun showNews(newsList: List<News>) {
-
+        progress.visibility = View.GONE
+        news_list.visibility = View.VISIBLE
+        news_list.adapter = NewsRecyclerViewAdapter(newsList)
     }
 }
