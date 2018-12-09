@@ -7,7 +7,7 @@ import com.architecture.clean.domain.News
 import com.architecture.clean.presentation.di.component.DaggerNewsListComponent
 import com.architecture.clean.presentation.interfaces.NewsListView
 import com.architecture.clean.presentation.presenter.NewsListPresenter
-import com.architecture.clean.presentation.presenter.NewsRecyclerViewAdapter
+import com.architecture.clean.presentation.adapter.NewsRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
