@@ -10,4 +10,9 @@ interface NewsListView {
      * Show a list of news.
      */
     fun showNews(newsList: List<News>)
+
+    /**
+     * Show news.
+     */
+    fun showNewsContent(title: String)
 }

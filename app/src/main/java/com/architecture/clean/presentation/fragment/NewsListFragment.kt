@@ -41,8 +41,12 @@ class NewsListFragment : BaseFragment(), NewsListView {
         news_list.visibility = View.VISIBLE
         news_list.adapter = NewsRecyclerViewAdapter(newsList, object : NewsRecyclerViewAdapter.OnClickNewsListener {
             override fun onClickNews(news: News) {
-                Toast.makeText(context, news.title, Toast.LENGTH_SHORT).show()
+                newsListPresenter.onClickNews(news)
             }
         })
+    }
+
+    override fun showNewsContent(title: String) {
+        Toast.makeText(context, title, Toast.LENGTH_SHORT).show()
     }
 }

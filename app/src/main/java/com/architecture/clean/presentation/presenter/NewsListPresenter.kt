@@ -52,4 +52,8 @@ class NewsListPresenter @Inject constructor(private val newsInteractor: NewsInte
             })
         }
     }
+
+    fun onClickNews(news: News) {
+        view.showNewsContent(news.title)
+    }
 }
