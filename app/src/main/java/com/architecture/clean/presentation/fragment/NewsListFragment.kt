@@ -2,8 +2,8 @@ package com.architecture.clean.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.architecture.clean.R
+import com.architecture.clean.domain.News
 import com.architecture.clean.presentation.di.component.DaggerNewsListComponent
 import com.architecture.clean.presentation.interfaces.NewsListView
 import com.architecture.clean.presentation.presenter.NewsListPresenter
@@ -33,7 +33,7 @@ class NewsListFragment : BaseFragment(), NewsListView {
         newsListPresenter.initialize(this, this, viewLifecycleOwner)
     }
 
-    override fun showNews() {
-        Toast.makeText(context, "Message", Toast.LENGTH_SHORT).show()
+    override fun showNews(newsList: List<News>) {
+
     }
 }

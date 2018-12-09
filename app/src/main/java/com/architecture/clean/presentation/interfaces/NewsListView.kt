@@ -1,8 +1,13 @@
 package com.architecture.clean.presentation.interfaces
 
+import com.architecture.clean.domain.News
+
 /**
  * The news list interface.
  */
 interface NewsListView {
-    fun showNews()
+    /**
+     * Show a list of news.
+     */
+    fun showNews(newsList: List<News>)
 }

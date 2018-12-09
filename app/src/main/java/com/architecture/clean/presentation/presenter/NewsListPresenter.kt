@@ -48,7 +48,7 @@ class NewsListPresenter @Inject constructor(private val newsInteractor: NewsInte
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun onCreate() {
             newsList.observe(viewLayoutLifecycleOwner, Observer {
-                view.showNews()
+                view.showNews(it)
             })
         }
     }
