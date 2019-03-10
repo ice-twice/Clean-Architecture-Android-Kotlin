@@ -10,27 +10,23 @@ import kotlinx.android.synthetic.main.toolbar.*
  * Abstract activity.
  */
 abstract class BaseActivity : AppCompatActivity() {
-    open fun needSetContentView(): Boolean = false
-    open fun layoutId(): Int = 0
-    abstract fun fragmentContainerId(): Int
-    abstract fun fragment(): Fragment
-    open fun initializeToolbar(): Boolean = false
-    open fun toolbarTitle(): String = ""
+    abstract fun getActivityBuilder(): ActivityBuilder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (needSetContentView()) {
-            setContentView(layoutId())
+        val activityBuilder = getActivityBuilder()
+        if (activityBuilder.layoutId != 0) {
+            setContentView(activityBuilder.layoutId)
         }
 
-        if (savedInstanceState == null) {
-            addFragment(fragmentContainerId(), fragment())
-        }
-
-        if (initializeToolbar()) {
+        if (!activityBuilder.toolbarTitle.isNullOrEmpty()) {
             setSupportActionBar(toolbar)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.title = toolbarTitle()
+            supportActionBar?.title = activityBuilder.toolbarTitle
+        }
+
+        if (savedInstanceState == null && activityBuilder.fragmentContainerId != 0) {
+            addFragment(activityBuilder.fragmentContainerId, activityBuilder.fragmentInstance)
         }
     }
 
