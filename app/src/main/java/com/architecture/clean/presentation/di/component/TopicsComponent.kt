@@ -1,7 +1,7 @@
 package com.architecture.clean.presentation.di.component
 
 import com.architecture.clean.presentation.di.module.NavigationModule
-import com.architecture.clean.presentation.fragment.TopicListFragment
+import com.architecture.clean.presentation.view.topiclist.TopicListFragment
 import dagger.Component
 import javax.inject.Singleton
 

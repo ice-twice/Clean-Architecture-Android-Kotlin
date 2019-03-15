@@ -10,7 +10,7 @@ import com.architecture.clean.domain.interactor.LoginInteractor
 import com.architecture.clean.domain.interactor.abstractinteractor.adapter.observer.ObserverAdapter
 import com.architecture.clean.presentation.component.StoppableLiveData
 import com.architecture.clean.presentation.interfaces.LoginView
-import com.architecture.clean.presentation.presenter.base.BasePresenterViewAndLayoutLifecycle
+import com.architecture.clean.presentation.view.base.presenter.BasePresenterViewAndLayoutLifecycle
 import io.reactivex.observers.DisposableCompletableObserver
 import javax.inject.Inject
 

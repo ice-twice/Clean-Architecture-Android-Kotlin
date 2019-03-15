@@ -1,6 +1,6 @@
 package com.architecture.clean.presentation.di.component
 
-import com.architecture.clean.presentation.service.TimerService
+import com.architecture.clean.presentation.view.timer.TimerService
 import dagger.Component
 import javax.inject.Singleton
 

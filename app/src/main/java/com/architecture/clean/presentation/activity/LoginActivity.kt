@@ -1,6 +1,8 @@
 package com.architecture.clean.presentation.activity
 
 import com.architecture.clean.presentation.fragment.LoginFragment
+import com.architecture.clean.presentation.view.base.activity.ActivityBuilder
+import com.architecture.clean.presentation.view.base.activity.BaseActivity
 
 /**
  * The login screen.

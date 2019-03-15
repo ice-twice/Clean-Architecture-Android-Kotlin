@@ -10,6 +10,7 @@ import com.architecture.clean.presentation.interfaces.LoginView
 import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.presenter.LoginPresenter
 import com.architecture.clean.presentation.util.AndroidUtil
+import com.architecture.clean.presentation.view.base.fragment.BaseFragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject

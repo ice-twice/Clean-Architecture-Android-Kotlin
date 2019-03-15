@@ -24,12 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.activity.TopicListActivity" />
-        <activity android:name=".presentation.activity.TimerActivity" />
-        <activity android:name=".presentation.activity.InternetStatusActivity" />
-        <activity android:name=".presentation.activity.NewsListActivity" />
+        <activity android:name=".presentation.view.topiclist.TopicListActivity" />
+        <activity android:name=".presentation.view.timer.TimerActivity" />
+        <activity android:name=".presentation.view.internetstatus.InternetStatusActivity" />
+        <activity android:name=".presentation.view.newslist.NewsListActivity" />
 
-        <service android:name=".presentation.service.TimerService" />
+        <service android:name=".presentation.view.timer.TimerService" />
     </application>
 
 </manifest>

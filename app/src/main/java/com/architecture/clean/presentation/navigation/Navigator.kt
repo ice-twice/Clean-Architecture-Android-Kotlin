@@ -2,10 +2,10 @@ package com.architecture.clean.presentation.navigation
 
 import android.content.Context
 import android.content.Intent
-import com.architecture.clean.presentation.activity.InternetStatusActivity
-import com.architecture.clean.presentation.activity.NewsListActivity
-import com.architecture.clean.presentation.activity.TimerActivity
-import com.architecture.clean.presentation.activity.TopicListActivity
+import com.architecture.clean.presentation.view.internetstatus.InternetStatusActivity
+import com.architecture.clean.presentation.view.newslist.NewsListActivity
+import com.architecture.clean.presentation.view.timer.TimerActivity
+import com.architecture.clean.presentation.view.topiclist.TopicListActivity
 
 /**
  * The navigator.
