@@ -6,6 +6,10 @@ import com.architecture.clean.presentation.di.module.*
  * This class is used to provide modules.
  */
 class ModuleProvider {
+    val contextModule by lazy(mode = LazyThreadSafetyMode.NONE) {
+        ContextModule()
+    }
+
     val backgroundSchedulerModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         BackgroundSchedulerModule()
     }
@@ -16,10 +20,6 @@ class ModuleProvider {
 
     val navigatorModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         NavigationModule()
-    }
-
-    val contextModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        ContextModule()
     }
 
     val newsRepositoryModule by lazy(mode = LazyThreadSafetyMode.NONE) {
