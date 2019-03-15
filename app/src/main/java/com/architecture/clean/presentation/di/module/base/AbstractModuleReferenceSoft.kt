@@ -1,4 +1,4 @@
-package com.architecture.clean.presentation.di.module
+package com.architecture.clean.presentation.di.module.base
 
 import java.lang.ref.SoftReference
 

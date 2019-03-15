@@ -1,6 +1,7 @@
 package com.architecture.clean.presentation.di.module
 
 import com.architecture.clean.domain.scheduler.PostExecutionScheduler
+import com.architecture.clean.presentation.di.module.base.AbstractModuleReferenceSoft
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler

@@ -1,5 +1,6 @@
 package com.architecture.clean.presentation.di.module
 
+import com.architecture.clean.presentation.di.module.base.AbstractModuleReferenceSoft
 import com.architecture.clean.presentation.navigation.Navigator
 import dagger.Module
 import dagger.Provides

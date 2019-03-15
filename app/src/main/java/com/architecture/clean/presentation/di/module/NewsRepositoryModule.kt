@@ -2,6 +2,7 @@ package com.architecture.clean.presentation.di.module
 
 import com.architecture.clean.data.NewsRepositoryImpl
 import com.architecture.clean.domain.repository.NewsRepository
+import com.architecture.clean.presentation.di.module.base.AbstractModuleReferenceSoft
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
