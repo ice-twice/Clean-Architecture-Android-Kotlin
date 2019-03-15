@@ -6,8 +6,8 @@ import android.widget.Toast
 import com.architecture.clean.R
 import com.architecture.clean.domain.News
 import com.architecture.clean.presentation.di.component.DaggerNewsListComponent
-import com.architecture.clean.presentation.view.base.interfaces.NewsListView
 import com.architecture.clean.presentation.view.base.fragment.BaseFragment
+import com.architecture.clean.presentation.view.base.interfaces.NewsListView
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 

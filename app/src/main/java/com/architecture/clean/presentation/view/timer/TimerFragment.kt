@@ -7,8 +7,8 @@ import android.view.View
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.architecture.clean.R
 import com.architecture.clean.presentation.di.component.DaggerTimerComponent
-import com.architecture.clean.presentation.view.base.interfaces.TimerView
 import com.architecture.clean.presentation.view.base.fragment.BaseFragment
+import com.architecture.clean.presentation.view.base.interfaces.TimerView
 import kotlinx.android.synthetic.main.fragment_timer.*
 import javax.inject.Inject
 

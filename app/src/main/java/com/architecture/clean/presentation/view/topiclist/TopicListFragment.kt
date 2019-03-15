@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.architecture.clean.R
 import com.architecture.clean.presentation.di.component.DaggerTopicsComponent
-import com.architecture.clean.presentation.view.base.interfaces.TopicsView
 import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.view.base.fragment.BaseFragment
+import com.architecture.clean.presentation.view.base.interfaces.TopicsView
 import kotlinx.android.synthetic.main.fragment_topic_list.*
 import javax.inject.Inject
 
