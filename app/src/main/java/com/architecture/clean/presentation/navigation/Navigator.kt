@@ -5,18 +5,11 @@ import android.content.Intent
 import com.architecture.clean.presentation.view.internetstatus.InternetStatusActivity
 import com.architecture.clean.presentation.view.newslist.NewsListActivity
 import com.architecture.clean.presentation.view.timer.TimerActivity
-import com.architecture.clean.presentation.view.topiclist.TopicListActivity
 
 /**
  * The navigator.
  */
 class Navigator {
-    /**
-     * Show a view of the list of topics.
-     */
-    fun showTopicList(context: Context?) {
-        context?.startActivity(Intent(context, TopicListActivity::class.java))
-    }
 
     /**
      * Show the clean architecture view.

@@ -1,16 +1,9 @@
 <resources>
     <string name="app_name">CleanArchitecture-Android</string>
-    <string name="login">Login</string>
-    <string name="password">Password</string>
-    <string name="sign_in">Sign in</string>
-    <string name="login_title">Clean Architecture</string>
-    <string name="login_hint">To open the next view, leave the login and the password fields empty.</string>
     <string name="what_is_clean_architecture">What is Clean Architecture?</string>
     <string name="advantages_of_clean_architecture">Advantages of Clean Architecture</string>
     <string name="about_author">About author</string>
     <string name="an_example_of_saving_ui_states_of_a_multi_pane_window">An example of saving UI states of a multi-pane window</string>
-    <string name="internet_connection_is_not_available">Internet connection is not available</string>
-    <string name="this_screen_represents_the_login_operation_the_purpose_of_this_screen_is_to_show_the_possibility_to_save_ui_state_after_changing_configuration_like_screen_rotation">This screen represents the login operation. The purpose of this screen is to show the possibility to save ui state after changing configuration like screen rotation.</string>
     <string name="topic_image">Topic image</string>
     <string name="topics">Topics</string>
     <string name="timer">Timer</string>

@@ -14,20 +14,12 @@ class ModuleProvider {
         PostExecutionSchedulerModule()
     }
 
-    val androidUtilModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        AndroidUtilModule()
-    }
-
     val navigatorModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         NavigationModule()
     }
 
     val contextModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         ContextModule()
-    }
-
-    val authenticationRepositoryModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        AuthenticationRepositoryModule()
     }
 
     val newsRepositoryModule by lazy(mode = LazyThreadSafetyMode.NONE) {
