@@ -3,9 +3,8 @@ package com.architecture.clean.presentation.di.module.base
 import java.lang.ref.Reference
 
 /**
- * Abstract module.
- *
- * All modules should wrap their held objects with SoftReference.
+ * Abstract module class for modules which uses different types of references apart from the
+ * strong type.
  */
 abstract class AbstractModuleReference<T, K : Reference<T>> {
     private var reference: K? = null
