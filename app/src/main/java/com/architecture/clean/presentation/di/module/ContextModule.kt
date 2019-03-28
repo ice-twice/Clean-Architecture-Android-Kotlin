@@ -1,13 +1,13 @@
 package com.architecture.clean.presentation.di.module
 
 import android.content.Context
-import com.architecture.clean.presentation.di.module.base.AbstractModule
+import com.architecture.clean.presentation.di.module.base.BaseModule
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class ContextModule : AbstractModule<Context>() {
+class ContextModule : BaseModule<Context>() {
 
     @Provides
     @Singleton
