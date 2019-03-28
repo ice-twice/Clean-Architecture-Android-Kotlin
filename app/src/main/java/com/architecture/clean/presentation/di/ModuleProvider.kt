@@ -10,19 +10,11 @@ class ModuleProvider {
         ContextModule()
     }
 
-    val backgroundSchedulerModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        BackgroundSchedulerModule()
-    }
+    val backgroundSchedulerModule get() = BackgroundSchedulerModule()
 
-    val postExecutionSchedulerModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        PostExecutionSchedulerModule()
-    }
+    val postExecutionSchedulerModule get() = PostExecutionSchedulerModule()
 
-    val navigatorModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        NavigationModule()
-    }
+    val navigatorModule get() = NavigationModule()
 
-    val newsRepositoryModule by lazy(mode = LazyThreadSafetyMode.NONE) {
-        NewsRepositoryModule()
-    }
+    val newsRepositoryModule get() = NewsRepositoryModule()
 }
