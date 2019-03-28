@@ -37,7 +37,7 @@
         android:layout_margin="@dimen/dp16"
         android:clickable="true"
         android:focusable="true"
-        app:layout_behavior="com.architecture.clean.presentation.component.coordinatorbehavior.FloatingActionButtonBehavior"
+        app:layout_behavior="com.architecture.clean.presentation.view.internetstatus.coordinatorbehavior.FloatingActionButtonBehavior"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <TextView
@@ -50,5 +50,5 @@
         android:paddingEnd="50dp"
         android:paddingBottom="@dimen/dp8"
         android:text="@string/this_is_an_example_of_using_the_coordinator_layout_this_tip_and_the_floating_button_can_change_own_position_according_to_the_scroll"
-        app:layout_behavior="com.architecture.clean.presentation.component.coordinatorbehavior.TextViewDescriptionBehavior" />
+        app:layout_behavior="com.architecture.clean.presentation.view.internetstatus.coordinatorbehavior.TextViewDescriptionBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
