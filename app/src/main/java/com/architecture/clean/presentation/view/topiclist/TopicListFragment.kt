@@ -3,6 +3,7 @@ package com.architecture.clean.presentation.view.topiclist
 import android.os.Bundle
 import android.view.View
 import com.architecture.clean.R
+import com.architecture.clean.presentation.di.ModuleProvider
 import com.architecture.clean.presentation.di.component.DaggerTopicsComponent
 import com.architecture.clean.presentation.navigation.Navigator
 import com.architecture.clean.presentation.view.base.fragment.BaseFragment
@@ -25,7 +26,7 @@ class TopicListFragment : BaseFragment(), TopicsView {
         super.onCreate(savedInstanceState)
 
         DaggerTopicsComponent.builder()
-                .navigationModule(getModuleProvider().navigatorModule)
+                .navigationModule(ModuleProvider.navigatorModule)
                 .build()
                 .inject(this)
     }

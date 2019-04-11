@@ -5,7 +5,7 @@ import com.architecture.clean.presentation.di.module.*
 /**
  * This class is used to provide modules.
  */
-class ModuleProvider {
+object ModuleProvider {
     val contextModule by lazy(mode = LazyThreadSafetyMode.NONE) {
         ContextModule()
     }

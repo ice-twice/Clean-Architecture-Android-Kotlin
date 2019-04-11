@@ -7,12 +7,6 @@ import com.architecture.clean.presentation.di.ModuleProvider
 import com.squareup.leakcanary.LeakCanary
 
 class AndroidApplication : Application() {
-    val moduleProvider by lazy(mode = LazyThreadSafetyMode.NONE) {
-        val moduleProvider = ModuleProvider()
-        moduleProvider.contextModule.instance = this
-        return@lazy moduleProvider
-    }
-
     override fun onCreate() {
         // initialize strict mode
         if (BuildConfig.DEBUG) {
@@ -32,5 +26,7 @@ class AndroidApplication : Application() {
         if (BuildConfig.DEBUG) {
             LeakCanary.install(this)
         }
+
+        ModuleProvider.contextModule.instance = this
     }
 }

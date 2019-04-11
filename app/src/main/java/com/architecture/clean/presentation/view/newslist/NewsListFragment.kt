@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import com.architecture.clean.R
 import com.architecture.clean.domain.News
+import com.architecture.clean.presentation.di.ModuleProvider
 import com.architecture.clean.presentation.di.component.DaggerNewsListComponent
 import com.architecture.clean.presentation.view.base.fragment.BaseFragment
 import com.architecture.clean.presentation.view.base.interfaces.NewsListView
@@ -23,9 +24,9 @@ class NewsListFragment : BaseFragment(), NewsListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DaggerNewsListComponent.builder()
-                .backgroundSchedulerModule(getModuleProvider().backgroundSchedulerModule)
-                .postExecutionSchedulerModule(getModuleProvider().postExecutionSchedulerModule)
-                .newsRepositoryModule(getModuleProvider().newsRepositoryModule)
+                .backgroundSchedulerModule(ModuleProvider.backgroundSchedulerModule)
+                .postExecutionSchedulerModule(ModuleProvider.postExecutionSchedulerModule)
+                .newsRepositoryModule(ModuleProvider.newsRepositoryModule)
                 .build()
                 .inject(this)
     }
